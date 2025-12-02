@@ -1,0 +1,230 @@
+@use "./../../../../variables" as *;
+
+/* ======================================
+   DIALOG TITLE
+====================================== */
+.dialog-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #00337c;
+  margin-bottom: 10px;
+  font-family: "Inter", sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.div-form-field {
+  padding-top: 10px;
+}
+
+/* ======================================
+   MAIN CONTENT AREA
+====================================== */
+.dialog-content {
+  padding: 20px 26px 10px;
+  font-family: "Inter", sans-serif;
+
+  .row {
+    display: flex;
+    gap: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .input-field {
+    flex: 1;
+
+    mat-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #00337c;
+      letter-spacing: 0.3px;
+    }
+
+    input,
+    textarea,
+    mat-select {
+      font-size: 15px;
+      color: #222;
+    }
+  }
+
+  .full-width {
+    width: 100%;
+  }
+}
+
+/* ======================================
+   BUTTONS
+====================================== */
+.dialog-actions {
+  padding: 14px 26px 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+  font-family: "Inter", sans-serif;
+  border-top: 1px solid #e5e7f0;
+  margin-top: 16px;
+
+  .cancel-btn {
+    color: #666;
+    font-weight: 600;
+    text-transform: none;
+    border-radius: 6px;
+
+    &:hover {
+      background: #f1f4fa;
+    }
+  }
+
+  .save-btn {
+    background-color: #00337c !important;
+    color: #ffffff !important;
+    padding: 10px 22px;
+    font-size: 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: none;
+    box-shadow: 0 4px 12px rgba(0, 51, 124, 0.28);
+
+    &:hover {
+      background-color: #002b55 !important;
+      box-shadow: 0 6px 18px rgba(0, 51, 124, 0.35);
+      transform: translateY(-1px);
+    }
+  }
+}
+
+/* ======================================
+   ANGULAR MATERIAL OVERRIDES
+====================================== */
+
+:host ::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 16px !important;
+  box-shadow: 0px 12px 50px rgba(0, 0, 0, 0.25) !important;
+  padding: 0 !important;
+  max-width: 760px;
+  width: calc(100vw - 64px);
+}
+
+/* Input background + rounded */
+:host ::ng-deep .dialog-content .mat-mdc-text-field-wrapper {
+  background-color: #ffffff !important;
+  border-radius: 10px !important;
+  border: 1px solid #e2e6ee !important;
+  box-shadow: 0 4px 12px rgba(0, 51, 124, 0.06);
+  transition: all 0.2s ease-in-out;
+  padding: 0 12px;
+
+  &:hover {
+    border-color: #c1c6d4 !important;
+  }
+}
+
+:host ::ng-deep .dialog-content .mat-mdc-form-field-infix {
+  padding-bottom: 12px !important;
+}
+
+/* Select Panel */
+:host ::ng-deep .mat-mdc-select-panel {
+  background: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18) !important;
+  border-radius: 10px !important;
+}
+
+/* Make the visible mat-select trigger area solid white */
+:host ::ng-deep mat-select.dropdown-field .mat-mdc-select-trigger {
+  background-color: #ffffff !important;
+}
+
+/* Optional: also ensure text container has white background */
+:host ::ng-deep mat-select.dropdown-field .mat-mdc-select-value {
+  background-color: #ffffff !important;
+}
+
+/* ======================================
+   STATUS CHECKBOX
+====================================== */
+
+.checkbox-field {
+  padding-top: 4px;
+
+  .checkbox-main-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #00337c;
+    margin-bottom: 6px;
+    font-family: "Inter", sans-serif;
+  }
+
+  mat-checkbox {
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+  }
+
+  /* Checkbox theming (optional) */
+  ::ng-deep .mat-mdc-checkbox .mdc-checkbox__background {
+    border-color: #00337c !important;
+  }
+
+  ::ng-deep .mat-mdc-checkbox.mat-mdc-checkbox-checked .mdc-checkbox__background {
+    background-color: #00337c !important;
+  }
+}
+
+/* ======================================
+   RESPONSIVE BREAKPOINTS
+====================================== */
+
+@media (max-width: 992px) {
+  .dialog-title {
+    font-size: 22px;
+  }
+
+  .dialog-content {
+    padding: 16px 20px 12px;
+  }
+
+  :host ::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+    max-width: 640px;
+    width: calc(100vw - 48px);
+  }
+}
+
+@media (max-width: 600px) {
+  .dialog-title {
+    font-size: 20px;
+  }
+
+  .dialog-content {
+    padding: 14px 16px;
+
+    .row {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+  }
+
+  .dialog-actions {
+    padding: 14px 16px;
+    flex-wrap: wrap;
+  }
+
+  :host ::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+    width: calc(100vw - 32px);
+    border-radius: 14px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .dialog-title {
+    font-size: 18px;
+  }
+
+  .dialog-content {
+    padding: 12px 12px;
+  }
+
+  .dialog-actions {
+    padding: 12px 12px;
+  }
+}

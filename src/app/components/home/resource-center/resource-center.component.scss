@@ -1,0 +1,132 @@
+@use "./../../../../variables" as *;
+
+.resource-center {
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  padding: 100px 0px 0px;
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1200px;
+    flex-wrap: wrap;
+  }
+
+     .section-subtitle {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #00337C;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+  .image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  .text-container {
+    flex: 1;
+    color: #333;
+    font-family: "Poppins", sans-serif;
+
+    .intro {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    // .points {
+    //   list-style: disc;
+    //   padding-left: 25px;
+    //   margin-bottom: 20px;
+
+    //   li {
+    //     margin-bottom: 12px;
+    //     line-height: 1.7;
+    //     font-size: 16px;
+
+    //     strong {
+    //       color: #00337c; // professional blue accent
+    //     }
+    //   }
+    // }
+
+    .points {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        position: relative;
+        padding-left: 35px;
+        font-size: 16px;
+        line-height: 1.8;
+        color: #444;
+        margin-bottom: 18px;
+        transition: all 0.3s ease;
+
+        &::before {
+          content: "\25b9";
+          position: absolute;
+          left: 0;
+          top: 0;
+          color: #00337c;
+          font-size: 22px;
+          line-height: 1.4;
+        }
+
+        &:hover {
+          transform: translateX(4px);
+          color: #000;
+        }
+        strong {
+          color: #00337c; // professional blue accent
+        }
+      }
+    }
+  }
+
+  /* ✅ Responsive Layout */
+  @media (max-width: 992px) {
+    .content {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .image-container img {
+      max-width: 100%;
+    }
+
+    .text-container {
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 40px 20px;
+
+    .text-container .intro {
+      font-size: 15px;
+    }
+
+    .points li {
+      font-size: 15px;
+    }
+  }
+}

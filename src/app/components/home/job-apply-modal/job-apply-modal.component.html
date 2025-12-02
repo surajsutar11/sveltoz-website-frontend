@@ -1,0 +1,56 @@
+<h2 mat-dialog-title class="title-job">Apply for {{ jobData.title }}</h2>
+
+<div mat-dialog-content>
+
+  <form [formGroup]="applyForm" class="form">
+    <div class="row">
+      <div class="col">
+        <label>Full Name *</label>
+        <input type="text" formControlName="fullName" />
+        <small *ngIf="applyForm.controls.fullName.touched && applyForm.controls.fullName.invalid">
+          Name is required
+        </small>
+      </div>
+
+      <div class="col">
+        <label>Email *</label>
+        <input type="email" formControlName="email" />
+        <small *ngIf="applyForm.controls.email.touched && applyForm.controls.email.invalid">
+          Enter a valid email address
+        </small>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="row">
+      <div class="col">
+        <label>Phone *</label>
+        <input type="text" maxlength="10" formControlName="phone" />
+        <small *ngIf="applyForm.controls.phone.touched && applyForm.controls.phone.invalid">
+          Enter a valid 10-digit number
+        </small>
+      </div>
+
+      <div class="col">
+        <label>Resume (PDF) *</label>
+        <div class="upload-box">
+          <input type="file" (change)="onResumeUpload($event)" accept=".pdf,.doc,.docx" />
+        </div>
+        <small *ngIf="applyForm.controls.resume.touched && applyForm.controls.resume.invalid">
+          Resume is required
+        </small>
+      </div>
+    </div>
+
+    <!-- Row 3 Full Width -->
+    <label>Cover Letter (Optional)</label>
+    <textarea formControlName="coverLetter"></textarea>
+
+  </form>
+
+</div>
+
+<div mat-dialog-actions class="dialog-button" align="end">
+  <button mat-button class="cancel-btn" (click)="dialogRef.close()">Cancel</button>
+  <button mat-flat-button class="apply-btn" (click)="submit()">Submit</button>
+</div>

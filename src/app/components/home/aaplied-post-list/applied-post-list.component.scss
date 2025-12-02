@@ -1,0 +1,198 @@
+@use "./../../../../variables" as *;
+
+.applied-post-list {
+  font-family: "Inter", sans-serif;
+  background: #ffffff;
+  padding: 24px 22px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  max-width: 1200px;
+
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+
+    h2 {
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #00337c;
+      letter-spacing: 0.3px;
+    }
+
+    mat-form-field {
+      width: 320px;
+      margin: 0;
+
+      .mat-mdc-form-field-subscript-wrapper {
+        display: none; // optional: hide hints/errors if not used
+      }
+
+      .mat-mdc-text-field-wrapper {
+        border-radius: 999px !important;
+        background: #f6f7fb;
+      }
+
+      .mat-mdc-form-field-flex {
+        align-items: center;
+      }
+
+      .mat-mdc-form-field-infix {
+        padding-top: 0.4rem;
+        padding-bottom: 0.4rem;
+      }
+
+      .mat-mdc-floating-label,
+      .mdc-floating-label {
+        font-size: 0.85rem;
+      }
+    }
+
+    .search-field {
+      padding: 0 10px;
+      font-size: 0.9rem;
+    }
+  }
+
+  .table-wrapper {
+    overflow: auto;
+    border-radius: 10px;
+    border: 1px solid #e3e7f0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th.mat-header-cell {
+      background: #f4f7fb;
+      color: #00337c;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #dde3f0;
+    }
+
+    td.mat-cell {
+      font-size: 0.88rem;
+      border-bottom: 1px solid #f0f2f7;
+    }
+
+    tr.mat-row:hover {
+      background: #f8faff;
+    }
+
+    th.mat-header-cell,
+    td.mat-cell {
+      padding: 0.75rem 0.9rem;
+    }
+  }
+
+  .candidate-cell {
+    .name {
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 2px;
+    }
+    .email {
+      font-size: 0.78rem;
+      color: #666;
+    }
+  }
+
+  /* Status column (optional style) */
+  td.mat-cell:nth-child(5) {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    color: #00337c;
+  }
+
+  /* Actions column */
+  td.mat-cell:last-child {
+    text-align: center;
+  }
+
+  button[mat-icon-button] {
+    border-radius: 50%;
+    transition: background 0.2s ease, transform 0.1s ease;
+    .mat-icon {
+      font-size: 20px;
+    }
+
+    &:hover {
+      background: rgba(0, 51, 124, 0.08);
+      transform: translateY(-1px);
+    }
+  }
+
+  mat-progress-bar {
+    margin-bottom: 10px;
+  }
+
+  /* ========= Download Button (Blue Theme) ========== */
+.download-btn {
+  color: #00337c !important;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(0, 51, 124, 0.08);
+    transform: translateY(-1px);
+  }
+
+  mat-icon {
+    font-size: 20px;
+  }
+}
+
+
+  /* 📱 Responsive */
+  @media (max-width: 992px) {
+    max-width: 100%;
+    margin: 16px auto;
+
+    .toolbar {
+      flex-direction: column;
+      align-items: flex-start;
+
+      h2 {
+        font-size: 1.25rem;
+      }
+
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 18px 14px;
+
+    table {
+      th.mat-header-cell,
+      td.mat-cell {
+        padding: 0.6rem 0.7rem;
+        font-size: 0.82rem;
+      }
+    }
+
+    .candidate-cell {
+      .name {
+        font-size: 0.86rem;
+      }
+      .email {
+        font-size: 0.76rem;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 16px 10px;
+
+    .toolbar h2 {
+      font-size: 1.1rem;
+    }
+  }
+}

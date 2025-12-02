@@ -1,0 +1,179 @@
+@use "./../../../../variables" as *;
+
+.services-section {
+  padding: 100px 0px 0px;
+  background: #ffffff;
+  font-family: "Inter", sans-serif;
+
+  .section-subtitle {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #00337c;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+  }
+
+  .intro {
+    font-size: 16.5px;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .service-card {
+    background: #f9fafc;
+    border-radius: 10px;
+    padding: 30px 25px;
+    margin-bottom: 35px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+
+    &:hover {
+      background: #ffffff;
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-icon {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .values-heading {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #000;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .points {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        position: relative;
+        padding-left: 35px;
+        font-size: 16px;
+        line-height: 1.8;
+        color: #444;
+        margin-bottom: 5px;
+        transition: all 0.3s ease;
+
+        &::before {
+          content: "\25b9"; // same triangle bullet
+          position: absolute;
+          left: 0;
+          top: 0;
+          color: #00337c;
+          font-size: 22px;
+          line-height: 1.4;
+        }
+
+        &:hover {
+          transform: translateX(4px);
+          color: #000;
+        }
+      }
+    }
+  }
+
+  /* ✨ Animation effect (same as culture section) */
+  [data-animate] {
+   
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+  }
+
+  [data-animate].visible {
+
+    transform: translateY(0);
+  }
+
+  /* 📱 Responsive adjustments */
+  @media (max-width: 992px) {
+    .section-subtitle {
+      text-align: center;
+    }
+
+    .intro {
+      font-size: 15.5px;
+    }
+
+    .service-card {
+      padding: 25px 20px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    padding: 60px 0;
+
+    .section-subtitle {
+      font-size: 1.3rem;
+    }
+
+    .intro {
+      font-size: 15px;
+      text-align: justify;
+    }
+
+    .points li {
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
+  }
+}
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.service-card {
+  background: #ffffff; /* No opacity */
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.service-card h2 {
+  font-size: 1.4rem;
+  color: #00337c;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.service-card ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.service-card li {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .service-card h2 {
+    font-size: 1.2rem;
+  }
+
+  .service-card li {
+    font-size: 0.9rem;
+  }
+}

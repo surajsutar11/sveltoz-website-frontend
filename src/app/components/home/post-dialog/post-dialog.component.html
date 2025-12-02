@@ -1,0 +1,80 @@
+<h2 mat-dialog-title class="dialog-title">
+  {{ isEditMode ? 'Edit Job Post' : 'Add Job Post' }}
+</h2>
+
+<mat-dialog-content [formGroup]="postForm" class="dialog-content">
+
+  <!-- Row 1: Title + Department -->
+  <div class="row div-form-field">
+    <mat-form-field appearance="outline" class="input-field">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input-field">
+      <mat-label>Department</mat-label>
+      <input matInput formControlName="department" />
+    </mat-form-field>
+  </div>
+
+  <!-- Row 2: Location + Job Type -->
+  <div class="row">
+    <mat-form-field appearance="outline" class="input-field">
+      <mat-label>Location</mat-label>
+      <input matInput formControlName="location" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input-field">
+      <mat-label>Job Type</mat-label>
+      <mat-select formControlName="job_type" class="dropdown-field">
+        <mat-option value="Full-time">Full-time</mat-option>
+        <mat-option value="Part-time">Part-time</mat-option>
+        <mat-option value="Contract">Contract</mat-option>
+        <mat-option value="Internship">Internship</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Row 3: Salary + Status (checkbox) -->
+  <div class="row">
+    <mat-form-field appearance="outline" class="input-field">
+      <mat-label>Salary</mat-label>
+      <input
+        matInput
+        formControlName="salary"
+        placeholder="e.g. 6–8 LPA or 80000/month"
+      />
+    </mat-form-field>
+
+    <!-- NOTE: no .input-field here, only .checkbox-field -->
+    <div class="checkbox-field">
+      <span class="checkbox-main-label">Status</span>
+      <mat-checkbox formControlName="is_active" color="primary">
+      </mat-checkbox>
+    </div>
+  </div>
+
+  <!-- Description full width -->
+   <div class="row">
+  <mat-form-field appearance="outline" class="full-width input-field">
+    <mat-label>Description</mat-label>
+    <textarea matInput rows="5" formControlName="description"></textarea>
+  </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-button class="cancel-btn" (click)="onCancel()">
+    Cancel
+  </button>
+
+  <button
+    mat-flat-button
+    color="primary"
+    class="save-btn"
+    (click)="onSave()"
+    [disabled]="isSaving"
+  >
+    {{ isEditMode ? 'Save Changes' : 'Add Post' }}
+  </button>
+</mat-dialog-actions>

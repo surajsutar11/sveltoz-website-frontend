@@ -1,0 +1,131 @@
+@use "./../../../../variables" as *;
+
+.our-story-section {
+  background: #ffffff;
+  padding: 100px 0px 0px;
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+  }
+
+  .image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  .text-container {
+    flex: 1;
+    color: #333;
+
+    .section-subtitle {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #00337c;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 25px;
+    }
+
+    .story-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        position: relative;
+        padding-left: 35px;
+        font-size: 16px;
+        line-height: 1.8;
+        color: #444;
+        margin-bottom: 18px;
+        transition: all 0.3s ease;
+
+        &::before {
+          content: "\25b9";
+          position: absolute;
+          left: 0;
+          top: 0;
+          color: #00337c;
+          font-size: 22px;
+          line-height: 1.4;
+        }
+
+        &:hover {
+          transform: translateX(4px);
+          color: #000;
+        }
+      }
+    }
+  }
+
+  /* ✨ Animation */
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+  }
+
+  [data-animate].visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* 📱 Responsive Layout */
+  @media (max-width: 992px) {
+    .content {
+      flex-direction: column;
+      gap: 30px;
+      text-align: left;
+    }
+
+    .image-container img {
+      max-width: 100%;
+    }
+
+    .text-container {
+      .section-subtitle {
+        text-align: left;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 60px 0;
+
+    .text-container {
+      .section-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .story-list li {
+        font-size: 15px;
+        padding-left: 25px;
+
+        &::before {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}

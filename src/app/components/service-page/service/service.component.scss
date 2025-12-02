@@ -1,0 +1,13 @@
+.scroll-container {
+      height: auto;
+  overflow: visible;
+//   height: 100vh;
+  width: 100%;
+//   overflow: hidden; /* JS will control scroll */
+}
+
+.scroll-section {
+//   height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+}

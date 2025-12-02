@@ -1,0 +1,30 @@
+<!-- <app-admin-panel></app-admin-panel>
+<app-applied-post-list></app-applied-post-list>
+<app-post-list></app-post-list> -->
+<section class="career-section container">
+
+  <div class="intro">
+    <h2>Join Our Team</h2>
+    <p>We are always looking for passionate, talented individuals who want to innovate and create real impact.</p>
+  </div>
+
+  <div class="job-list ">
+
+    <div class="job-card" *ngFor="let job of jobs">
+      <h3>{{ job.title }}</h3>
+
+      <div class="meta">
+        <span><i class="fa fa-building"></i> {{ job.department }}</span>
+        <span><i class="fa fa-map-marker"></i> {{ job.location }}</span>
+        <span><i class="fa fa-clock-o"></i> {{ job.job_type }}</span>
+      </div>
+
+      <p class="desc">{{ job.description }}</p>
+
+      <button class="apply-btn" (click)="apply(job)">
+        Apply Now
+      </button>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,31 @@
+<section class="success-stories-section">
+  <div class="container">
+
+    <div class="stories-grid">
+      <div class="story-card" *ngFor="let story of stories">
+        
+        <!-- Image -->
+        <div class="image-wrapper">
+          <img [src]="story.image" alt="{{ story.title }}" />
+          <span class="badge">Success Story</span>
+        </div>
+
+        <!-- Category -->
+        <span class="category">{{ story.category }}</span>
+
+        <!-- Title + Published -->
+        <div class="info">
+          <h4 class="domain">{{ story.domain }}</h4>
+          <!-- <p class="date">Posted On: {{ story.date }}</p> -->
+          <h3 class="title">{{ story.title }}</h3>
+          <p class="description">{{ story.description }}</p>
+          <p class="description">{{ story.impact }}</p>
+        </div>
+
+        <!-- <a class="read-more" href="#">Read Full Story →</a> -->
+
+      </div>
+    </div>
+
+  </div>
+</section>

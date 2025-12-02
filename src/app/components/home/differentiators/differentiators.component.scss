@@ -1,0 +1,134 @@
+@use "./../../../../variables" as *;
+
+.culture-values-section {
+    padding: 100px 0px 0px;
+    background: #ffffff;
+    font-family: "Inter", sans-serif;
+
+    .section-subtitle {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #00337C;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 20px;
+    }
+
+    .intro {
+        font-size: 16.5px;
+        color: #444;
+        line-height: 1.7;
+        margin-bottom: 25px;
+    }
+
+    .values-heading {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #000;
+        margin-bottom: 15px;
+    }
+
+     .points {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        position: relative;
+        padding-left: 35px;
+        font-size: 16px;
+        line-height: 1.8;
+        color: #444;
+        margin-bottom: 18px;
+        transition: all 0.3s ease;
+
+        &::before {
+          content: "\25b9";
+          position: absolute;
+          left: 0;
+          top: 0;
+          color: #00337c;
+          font-size: 22px;
+          line-height: 1.4;
+        }
+
+        &:hover {
+          transform: translateX(4px);
+          color: #000;
+        }
+        strong {
+          color: #00337c; // professional blue accent
+        }
+      }
+    }
+
+    .closing {
+        font-size: 16px;
+        color: #555;
+        line-height: 1.7;
+        margin-top: 10px;
+    }
+
+    .culture-img {
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.4s ease;
+
+        &:hover {
+            transform: scale(1.03);
+        }
+    }
+
+    /* ✨ Animation */
+    [data-animate] {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s ease-out;
+    }
+
+    [data-animate].visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* 📱 Responsive */
+    @media (max-width: 992px) {
+        .section-subtitle {
+            text-align: center;
+        }
+
+        .values-list {
+            li {
+                font-size: 15px;
+            }
+        }
+
+        .culture-img {
+            margin-top: 30px;
+            width: 90%;
+        }
+    }
+
+    @media (max-width: 576px) {
+        padding: 50px 0;
+
+        .intro,
+        .closing {
+            font-size: 15px;
+            text-align: justify;
+        }
+
+        .values-heading {
+            text-align: center;
+        }
+
+        .values-list li {
+            font-size: 14.5px;
+            line-height: 1.6;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+        }
+    }
+}

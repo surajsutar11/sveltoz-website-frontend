@@ -1,0 +1,20 @@
+
+<section class="services-section">
+  <div class="container">
+    <div class="header">
+      <h1 class="section-title">
+        SAP Consulting & Implementation
+      </h1>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card" *ngFor="let item of sapConsulting">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+        <!-- <a href="#" class="know-more">
+          Know More <span>&#8594;</span>
+        </a> -->
+      </div>
+    </div>
+  </div>
+</section>
