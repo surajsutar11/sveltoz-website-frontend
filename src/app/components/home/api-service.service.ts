@@ -133,6 +133,7 @@ export class ApiServiceService {
   }
 
   applyJob(data: any): Observable<any> {
+    console.log("API Service - applyJob called with data:", data);
     return this.http.post(this.apiUrl + "/apply", data);
   }
   downloadResume(applicationId: number) {

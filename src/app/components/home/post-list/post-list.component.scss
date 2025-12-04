@@ -3,7 +3,7 @@
 .post-list {
   font-family: "Inter", sans-serif;
   background: #ffffff;
-  padding: 24px 22px;
+  padding: 0px 22px;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
   max-width: 1200px;
@@ -25,7 +25,7 @@
 
     .toolbar-actions {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       gap: 12px;
 
       mat-form-field {
@@ -96,34 +96,34 @@
   }
 
   /* ========= Edit Button (Blue) ========== */
-.edit-btn {
-  color: #00337c !important;
-  transition: all 0.2s ease;
+  .edit-btn {
+    color: #00337c !important;
+    transition: all 0.2s ease;
 
-  &:hover {
-    background: rgba(0, 51, 124, 0.08);
-    transform: translateY(-1px);
+    &:hover {
+      background: rgba(0, 51, 124, 0.08);
+      transform: translateY(-1px);
+    }
+
+    mat-icon {
+      font-size: 20px;
+    }
   }
 
-  mat-icon {
-    font-size: 20px;
-  }
-}
+  /* ========= Delete Button (Red) ========== */
+  .delete-btn {
+    color: #d32f2f !important;
+    transition: all 0.2s ease;
 
-/* ========= Delete Button (Red) ========== */
-.delete-btn {
-  color: #d32f2f !important;
-  transition: all 0.2s ease;
+    &:hover {
+      background: rgba(211, 47, 47, 0.1);
+      transform: translateY(-1px);
+    }
 
-  &:hover {
-    background: rgba(211, 47, 47, 0.1);
-    transform: translateY(-1px);
+    mat-icon {
+      font-size: 20px;
+    }
   }
-
-  mat-icon {
-    font-size: 20px;
-  }
-}
 
 
   mat-progress-bar {
@@ -265,6 +265,7 @@
     padding: 18px 14px;
 
     table {
+
       th.mat-header-cell,
       td.mat-cell {
         padding: 0.6rem 0.7rem;
@@ -298,4 +299,59 @@
       }
     }
   }
+}
+
+.search-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 260px;
+  margin-bottom: 25px;
+}
+
+.search-box label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #00337C;
+  /* same blue color */
+}
+
+.search-box input {
+  height: 36px;
+  /* same height as shown */
+  padding: 6px 10px;
+  border: 2px solid #000000;
+  /* bold black border */
+  border-radius: 8px;
+  /* rounded corners */
+  font-size: 14px;
+}
+
+.search-box input::placeholder {
+  color: #7A7A7A;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #00337C;
+  /* focus border color */
+  box-shadow: 0 0 2px rgba(0, 51, 124, 0.4);
+}
+
+.status-pill {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-pill.open {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-pill.closed {
+  background-color: #f8d7da;
+  color: #721c24;
 }

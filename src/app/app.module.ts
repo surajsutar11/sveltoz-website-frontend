@@ -29,7 +29,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ToastrModule } from 'ngx-toastr';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -47,6 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ServicePageModule,
     ReactiveFormsModule,
     MatTabsModule,
+    MatSnackBarModule,
     // AnimateOnScrollModule.forRoot(),
     // MatDialog,
     BrowserModule,
@@ -59,6 +61,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatButtonModule,     // <button mat-button>, <button mat-raised-button> etc
     MatIconModule,
     MatCheckboxModule,
+   ToastrModule.forRoot({
+  positionClass: 'toast-top-right',
+  preventDuplicates: true,
+  closeButton: false,        // removed close icon
+  progressBar: false,        // optional: clean look
+  timeOut: 3000              // auto disappear
+}),
+
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),

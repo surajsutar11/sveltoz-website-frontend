@@ -6,35 +6,51 @@
       </div>
     </div>
 
-<div class="contact-container">
-  <!-- Left side: Image -->
-  <div class="contact-image">
-    <img src="assets/images/ssplImg/contact-us.jpg" alt="Contact Us">
+    <div class="contact-container">
+      <div class="contact-image">
+        <img src="assets/images/ssplImg/contact-us.jpg" alt="Contact Us">
+      </div>
+
+      <div class="contact-form">
+        <p>We’d love to hear from you! Please fill out the form below.</p>
+
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" formControlName="name" placeholder="Enter your name" />
+            <small *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid">
+              Name is required
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" formControlName="email" placeholder="Enter your email" />
+            <small *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.invalid">
+              Enter valid email
+            </small>
+            <small *ngIf="contactForm.get('email')?.hasError('pattern')">
+              Please enter a valid email address
+            </small>
+
+          </div>
+
+          <div class="form-group">
+            <label>Message</label>
+            <textarea formControlName="message" rows="4" placeholder="Type your message..."></textarea>
+            <small *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.invalid">
+              Message is required
+            </small>
+          </div>
+
+          <div class="btn-group">
+            <button type="submit" [disabled]="contactForm.invalid || isSubmitting">
+              {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
   </div>
-
-  <!-- Right side: Contact Form -->
-  <div class="contact-form">
-    <p>We’d love to hear from you! Please fill out the form below.</p>
-
-    <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
-      <div class="form-group">
-        <label>Name</label>
-        <input type="text" name="name" ngModel required placeholder="Enter your name" />
-      </div>
-
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" name="email" ngModel required placeholder="Enter your email" />
-      </div>
-
-      <div class="form-group">
-        <label>Message</label>
-        <textarea name="message" ngModel required rows="4" placeholder="Type your message..."></textarea>
-      </div>
-
-      <button type="submit" [disabled]="!contactForm.valid">Send Message</button>
-    </form>
-  </div>
-</div>
-</div>
 </section>

@@ -44,6 +44,7 @@ import { SuccessStoriesPageComponent } from './success-stories-page/success-stor
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { PostDialogComponent } from './post-dialog/post-dialog.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ToastrModule } from 'ngx-toastr';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -99,6 +100,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatTooltipModule,
     ReactiveFormsModule,
     MatCheckboxModule,
+  ToastrModule.forRoot({
+  positionClass: 'toast-top-right',
+  preventDuplicates: true,
+  closeButton: false,        // removed close icon
+  progressBar: false,        // optional: clean look
+  timeOut: 3000              // auto disappear
+}),
 
     TranslateModule.forChild({
       loader: {

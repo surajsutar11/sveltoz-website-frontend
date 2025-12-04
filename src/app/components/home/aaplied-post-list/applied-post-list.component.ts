@@ -60,10 +60,25 @@ export class AppliedPostListComponent implements OnInit {
     });
   }
 
-  applyFilter(event: Event): void {
-    const value = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = value.trim().toLowerCase();
-  }
+ applyFilter(event: Event): void {
+  const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+
+  this.dataSource.filterPredicate = (data: any, filter: string) => {
+    const createdDate = new Date(data.created_at).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    }).toLowerCase();
+
+    return data.name.toLowerCase().includes(filter) ||
+           data.email.toLowerCase().includes(filter) ||
+           data.post?.title.toLowerCase().includes(filter) ||
+           createdDate.includes(filter);
+  };
+
+  this.dataSource.filter = filterValue;
+}
+
 
   openResume(row: Application): void {
     this.apiService.downloadResume(row.id).subscribe({

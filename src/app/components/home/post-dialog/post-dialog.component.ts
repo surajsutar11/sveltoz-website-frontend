@@ -42,19 +42,19 @@ export class PostDialogComponent implements OnInit {
     this.isEditMode = !!this.data;
 
     this.postForm = this.fb.group({
-      title: [this.data?.title || '', [Validators.required]],
-      department: [this.data?.department || '', [Validators.required]],
-      location: [this.data?.location || '', [Validators.required]],
-      job_type: [this.data?.job_type || 'Full-time', [Validators.required]],
-      salary: [this.data?.salary || '', [Validators.required]],
-      is_active: [
-        this.data?.is_active !== undefined ? this.data.is_active : true
-      ],
-      description: [
-        (this.data as any)?.description || '',
-        [Validators.required]
-      ]
-    });
+  title: ['', Validators.required],
+  department: ['', Validators.required],
+  location: ['', Validators.required],
+  job_type: ['', Validators.required],
+  salary: ['', Validators.required],
+  is_active: [true],
+  description: ['', Validators.required]
+});
+if (this.data) {
+      this.isEditMode = true;
+      this.postForm.patchValue(this.data);
+    }
+
   }
 
   onSave(): void {

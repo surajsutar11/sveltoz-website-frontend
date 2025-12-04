@@ -1,12 +1,23 @@
 <div class="applied-post-list">
   <div class="toolbar">
-    <h2>Applied Posts</h2>
+  <h2>Applied Posts</h2>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Search</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Name, email, post title" class="search-field" />
-    </mat-form-field>
-  </div>
+<!-- <mat-form-field appearance="outline" class="search-field-custom">
+  <mat-label>Search</mat-label>
+  <input matInput placeholder="Name, email, post title" (keyup)="applyFilter($event)" />
+</mat-form-field> -->
+<div class="search-box">
+  <label>Search</label>
+  <input
+    type="text"
+    (keyup)="applyFilter($event)"
+    placeholder="Name, email, post title"
+  />
+</div>
+
+
+</div>
+
 
   <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
 
@@ -35,7 +46,7 @@
 
       <ng-container matColumnDef="post_title">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Post</th>
-        <td mat-cell *matCellDef="let row">{{ row.post.title }}</td>
+        <td mat-cell *matCellDef="let row">{{ row.post?.title }}</td>
       </ng-container>
 
       <!-- <ng-container matColumnDef="status">
@@ -48,14 +59,14 @@
       <ng-container matColumnDef="created_at">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Applied</th>
         <td mat-cell *matCellDef="let row">
-          {{ row.created_at | date : 'medium' }}
+            {{ (row.created_at + 'Z') | date:'medium':'+05:30':'en-US' }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let row">
-          <button mat-icon-button *ngIf="row.resume_url" (click)="openResume(row)" matTooltip="View Resume"
+          <button mat-icon-button *ngIf="row.resume_url" (click)="openResume(row)" 
             class="download-btn">
             <mat-icon>download</mat-icon>
           </button>

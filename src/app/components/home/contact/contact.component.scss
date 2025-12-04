@@ -93,6 +93,16 @@ button {
 button:hover {
   background-color:#00337C;
 }
+.btn-group{
+  display: flex;
+  justify-content: end;
+}
+
+small {
+  font-size: 12px;
+  color: red;
+  margin-top: 4px;
+}
 
 @media (max-width: 768px) {
   .contact-container {
@@ -102,4 +112,14 @@ button:hover {
   .contact-form, .contact-image {
     width: 100%;
   }
+}
+.toast-success {
+  background-color: #4caf50 !important;
+}
+
+.toast-error {
+  background-color: #f44336 !important;
+}
+.toast-info {
+  background-color: #2196f3 !important;
 }

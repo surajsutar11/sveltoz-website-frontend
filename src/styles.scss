@@ -224,3 +224,53 @@ a {
 }
 
 /* Bootstrap imports moved to top of file */
+.toast-success {
+  background-color: #4caf50 !important;
+}
+
+.toast-error {
+  background-color: #f44336 !important;
+}
+.toast-info {
+  background-color: #2196f3 !important;
+}
+.cdk-overlay-container {
+  z-index: 9999 !important;
+}
+
+#toast-container > div {
+  margin-top: 15px !important;
+}
+
+#toast-container {
+  position: fixed !important;
+  top: 12px !important;
+  right: 12px !important;
+  bottom: auto !important;
+  left: auto !important;
+  z-index: 99999 !important;
+}
+
+/* Main Toast Container Style */
+#toast-container .ngx-toastr {    /* white background */
+  color: #ffffff !important;            /* black text */
+  padding: 8px 14px !important;         /* compact padding */
+  border-radius: 6px !important;        /* smooth edges */
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.15) !important;
+  font-size: 18px !important;           /* normal readable size */
+  width: auto !important;               /* auto width based on content */
+  height: auto !important;              /* auto height */
+  min-height: auto !important;
+  display: inline-flex !important;      /* horizontal alignment */
+  align-items: center !important;
+}
+
+/* Remove close button globally if still visible */
+.toast-close-button {
+  display: none !important;
+}
+
+/* Remove extra margins */
+#toast-container > div {
+  margin-bottom: 8px !important;
+}

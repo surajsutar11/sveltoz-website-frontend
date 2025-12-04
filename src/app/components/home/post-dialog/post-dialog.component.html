@@ -1,80 +1,83 @@
-<h2 mat-dialog-title class="dialog-title">
+<h2 class="title-job-post">
   {{ isEditMode ? 'Edit Job Post' : 'Add Job Post' }}
 </h2>
 
-<mat-dialog-content [formGroup]="postForm" class="dialog-content">
+<form [formGroup]="postForm" class="post-form">
 
-  <!-- Row 1: Title + Department -->
-  <div class="row div-form-field">
-    <mat-form-field appearance="outline" class="input-field">
-      <mat-label>Title</mat-label>
-      <input matInput formControlName="title" />
-    </mat-form-field>
+  <!-- Row 1 -->
+  <div class="form-row">
+    <div class="form-group">
+      <label>Title <span>*</span></label>
+      <input type="text" formControlName="title" placeholder="Enter job title" />
+      <small *ngIf="postForm.get('title')?.invalid && postForm.get('title')?.touched">
+        Title is required
+      </small>
+    </div>
 
-    <mat-form-field appearance="outline" class="input-field">
-      <mat-label>Department</mat-label>
-      <input matInput formControlName="department" />
-    </mat-form-field>
-  </div>
-
-  <!-- Row 2: Location + Job Type -->
-  <div class="row">
-    <mat-form-field appearance="outline" class="input-field">
-      <mat-label>Location</mat-label>
-      <input matInput formControlName="location" />
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="input-field">
-      <mat-label>Job Type</mat-label>
-      <mat-select formControlName="job_type" class="dropdown-field">
-        <mat-option value="Full-time">Full-time</mat-option>
-        <mat-option value="Part-time">Part-time</mat-option>
-        <mat-option value="Contract">Contract</mat-option>
-        <mat-option value="Internship">Internship</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-
-  <!-- Row 3: Salary + Status (checkbox) -->
-  <div class="row">
-    <mat-form-field appearance="outline" class="input-field">
-      <mat-label>Salary</mat-label>
-      <input
-        matInput
-        formControlName="salary"
-        placeholder="e.g. 6–8 LPA or 80000/month"
-      />
-    </mat-form-field>
-
-    <!-- NOTE: no .input-field here, only .checkbox-field -->
-    <div class="checkbox-field">
-      <span class="checkbox-main-label">Status</span>
-      <mat-checkbox formControlName="is_active" color="primary">
-      </mat-checkbox>
+    <div class="form-group">
+      <label>Department <span>*</span></label>
+      <input type="text" formControlName="department" placeholder="Enter department" />
+      <small *ngIf="postForm.get('department')?.invalid && postForm.get('department')?.touched">
+        Department is required
+      </small>
     </div>
   </div>
 
-  <!-- Description full width -->
-   <div class="row">
-  <mat-form-field appearance="outline" class="full-width input-field">
-    <mat-label>Description</mat-label>
-    <textarea matInput rows="5" formControlName="description"></textarea>
-  </mat-form-field>
+  <!-- Row 2 -->
+  <div class="form-row">
+    <div class="form-group">
+      <label>Location <span>*</span></label>
+      <input type="text" formControlName="location" placeholder="Enter location" />
+      <small *ngIf="postForm.get('location')?.invalid && postForm.get('location')?.touched">
+        Location is required
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>Job Type <span>*</span></label>
+      <select formControlName="job_type">
+        <option value="">Select Type</option>
+        <option value="Full-time">Full-time</option>
+        <option value="Part-time">Part-time</option>
+        <option value="Contract">Contract</option>
+        <option value="Internship">Internship</option>
+      </select>
+      <small *ngIf="postForm.get('job_type')?.invalid && postForm.get('job_type')?.touched">
+        Job type is required
+      </small>
+    </div>
   </div>
-</mat-dialog-content>
 
-<mat-dialog-actions align="end" class="dialog-actions">
-  <button mat-button class="cancel-btn" (click)="onCancel()">
-    Cancel
-  </button>
+  <!-- Row 3 -->
+  <div class="form-row">
+    <div class="form-group">
+      <label>Salary <span>*</span></label>
+      <input type="text" formControlName="salary" placeholder="Example: 6–8 LPA" />
+      <small *ngIf="postForm.get('salary')?.invalid && postForm.get('salary')?.touched">
+        Salary is required
+      </small>
+    </div>
 
-  <button
-    mat-flat-button
-    color="primary"
-    class="save-btn"
-    (click)="onSave()"
-    [disabled]="isSaving"
-  >
-    {{ isEditMode ? 'Save Changes' : 'Add Post' }}
-  </button>
-</mat-dialog-actions>
+    <div class="form-group checkbox-area">
+      <label>Status</label>
+      <input type="checkbox" formControlName="is_active" />
+    </div>
+  </div>
+
+  <!-- Description -->
+  <div class="form-group full">
+    <label>Description <span>*</span></label>
+    <textarea formControlName="description" placeholder="Job role description..."></textarea>
+    <small *ngIf="postForm.get('description')?.invalid && postForm.get('description')?.touched">
+      Description is required
+    </small>
+  </div>
+
+  <div class="form-actions">
+    <button type="button" class="btn cancel" (click)="onCancel()">Cancel</button>
+    <button type="submit" class="btn submit" (click)="onSave()" [disabled]="postForm.invalid">
+      {{ isEditMode ? "Save Changes" : "Add Job Post" }}
+    </button>
+  </div>
+
+</form>

@@ -153,7 +153,7 @@
 
     .btn {
       border-radius: 25px;
-      padding: 0.6rem 1.4rem;
+      padding: 15px 1.4rem 10px;
       margin: 0.5rem;
       font-size: 1rem;
       transition: all 0.3s ease;
@@ -164,7 +164,7 @@
 
       @media (max-width: 480px) {
         font-size: 0.9rem;
-        padding: 0.5rem 1rem;
+        padding: 12px 1rem 9px;
       }
     }
   }

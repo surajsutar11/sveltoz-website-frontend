@@ -3,7 +3,7 @@
 .applied-post-list {
   font-family: "Inter", sans-serif;
   background: #ffffff;
-  padding: 24px 22px;
+  padding: 0px 22px;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
   max-width: 1200px;
@@ -11,7 +11,7 @@
   .toolbar {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     gap: 16px;
 
     h2 {
@@ -195,4 +195,35 @@
       font-size: 1.1rem;
     }
   }
+}
+.search-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 260px; /* adjust width here */
+  margin-bottom: 25px;
+}
+
+.search-box label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #00337C;        /* same blue color */
+}
+
+.search-box input {
+  height: 36px;          /* same height as shown */
+  padding: 6px 10px;
+  border: 2px solid #000000;  /* bold black border */
+  border-radius: 8px;         /* rounded corners */
+  font-size: 14px;
+}
+
+.search-box input::placeholder {
+  color: #7A7A7A;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #00337C;      /* focus border color */
+  box-shadow: 0 0 2px rgba(0, 51, 124, 0.4);
 }
