@@ -274,3 +274,11 @@ a {
 #toast-container > div {
   margin-bottom: 8px !important;
 }
+/* Remove toastr icon / background image */
+#toast-container .toast-success,
+#toast-container .toast-error,
+#toast-container .toast-info,
+#toast-container .toast-warning {
+  background-image: none !important;   /* removes built-in icon */
+  padding-left: 16px !important;       /* adjust spacing */
+}

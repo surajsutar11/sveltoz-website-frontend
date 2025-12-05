@@ -37,6 +37,7 @@ export class JobApplyModalComponent {
       ],
       phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       notes: [''],
+      resume: [null, Validators.required],
       post_id: [this.jobData.id, Validators.required]
     });
   }
@@ -68,11 +69,11 @@ export class JobApplyModalComponent {
     this.apiService.applyJob(formData).subscribe({
       next: (res) => {
         console.log("response", res);
-       this.toastr.success("Application submitted successfully!", "Success");
+       this.toastr.success("Application submitted successfully!");
         this.dialogRef.close(true);
       },
       error: (err) => {
-        this.toastr.error("Something went wrong. Try again!", "Error");
+        this.toastr.error("Something went wrong. Try again!");
         console.error(err);
       }
     });

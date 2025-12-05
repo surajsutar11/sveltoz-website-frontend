@@ -22,10 +22,10 @@
 
 /* 🔹 Gradient Background Layer */
 .slider-containent {
-  background: linear-gradient(180deg,
-      rgba(2, 14, 58, 0.84) 0%,
-      rgba(89, 109, 153, 0.65) 50%,
-      rgba(2, 9, 40, 0.85) 100%);
+  // background: linear-gradient(180deg,
+  //     rgba(2, 14, 58, 0.84) 0%,
+  //     rgba(89, 109, 153, 0.65) 50%,
+  //     rgba(2, 9, 40, 0.85) 100%);
   width: 100%;
   height: 100vh;
   display: flex;
@@ -297,4 +297,8 @@ backdrop-filter: blur(4px);
       transform: scale(1.05);
     }
   }
+}
+.owl-stage{
+    background: linear-gradient(180deg, rgba(2, 14, 58, 0.84) 0%, rgba(89, 109, 153, 0.65) 50%, 
+    rgba(2, 9, 40, 0.85) 100%) !important;
 }

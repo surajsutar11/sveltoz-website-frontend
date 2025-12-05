@@ -35,7 +35,7 @@
         <input
           type="text"
           formControlName="phone"
-          placeholder="Enter 10 digit number"
+          placeholder="Enter 10 digit number" maxlength="10"
         />
         <small *ngIf="applyForm.get('phone')?.invalid && applyForm.get('phone')?.touched">
           Enter valid phone number
@@ -45,7 +45,7 @@
       <div class="form-group">
         <label>Resume (PDF) <span>*</span></label>
         <div class="file-upload">
-          <input type="file" accept="application/pdf" (change)="onFileSelect($event)" />
+          <input type="file" accept="application/pdf" formControlName="resume" (change)="onFileSelect($event)" />
         </div>
         <small *ngIf="!resumeUploaded && submitAttempted">
           Resume is required
@@ -60,7 +60,7 @@
 
     <div class="form-actions">
       <button type="button" class="btn cancel" (click)="onCancel()">Cancel</button>
-      <button type="submit" class="btn submit" (click)="onSubmit()">Submit</button>
+      <button type="submit" class="btn submit" (click)="onSubmit()" [disabled]="applyForm.invalid">Submit</button>
     </div>
 
   </form>

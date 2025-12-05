@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ApiServiceService } from '../api-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 export interface JobPost {
   id?: number;  // optional for new posts
@@ -35,6 +36,7 @@ export class PostDialogComponent implements OnInit {
     private fb: FormBuilder,
     private apiService: ApiServiceService,
     private dialogRef: MatDialogRef<PostDialogComponent>,
+    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: JobPost | null
   ) {}
 
@@ -72,20 +74,24 @@ if (this.data) {
       this.apiService.updatePost(this.data.id, payload).subscribe({
         next: () => {
           this.isSaving = false;
+          this.toastr.success("Job post updated successfully");
           this.dialogRef.close('saved');
         },
         error: () => {
           this.isSaving = false;
+          this.toastr.error("Failed to update job post. Try again.");
         }
       });
     } else {
       this.apiService.createPost(payload).subscribe({
         next: () => {
           this.isSaving = false;
+          this.toastr.success("Job post created successfully");
           this.dialogRef.close('saved');
         },
         error: () => {
           this.isSaving = false;
+          this.toastr.error("Failed to create job post. Try again.");
         }
       });
     }

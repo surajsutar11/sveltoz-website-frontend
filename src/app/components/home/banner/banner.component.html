@@ -1,10 +1,6 @@
 <owl-carousel-o [options]="customOptions" class="banner-carousel">
-  <ng-template carouselSlide>
-    <div class="slide-container position-relative overflow-hidden">
-      <!-- 🔹 Background Video -->
-      <!-- <video autoplay muted loop playsinline class="background-video">
-        <source src="assets/images/slider/neuronvid.mp4" type="video/mp4" />
-      </video> -->
+  <ng-template carouselSlide class="">
+    <div class="slide-container position-relative overflow-hidden owl-stage">
 
       <!-- 🔹 Content -->
       <div class="content-wrapper slider-containent">
@@ -37,9 +33,9 @@
 
     </div>
   </ng-template>
-<!-- 
+
   <ng-template carouselSlide>
-    <div class="slide-container position-relative overflow-hidden">
+    <div class="slide-container position-relative overflow-hidden owl-stage">
       <div class="content-wrapper slider-containent">
         <div class="text-section text-white">
           <h6 class="banner-name">{{ 'Banner.Slide2.Title' | translate }}</h6>
@@ -69,7 +65,7 @@
 
 
   <ng-template carouselSlide>
-    <div class="slide-container position-relative overflow-hidden">
+    <div class="slide-container position-relative overflow-hidden owl-stage">
   
       <div class="content-wrapper slider-containent">
         <div class="text-section text-white">
@@ -96,7 +92,7 @@
         </div>
       </div>
     </div>
-  </ng-template> -->
+  </ng-template>
 </owl-carousel-o>
 
 

@@ -45,7 +45,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { PostDialogComponent } from './post-dialog/post-dialog.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ToastrModule } from 'ngx-toastr';
-
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -73,7 +73,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     PostListComponent,
     SuccessStoriesPageComponent,
     AdminDashboardComponent,
-    PostDialogComponent
+    PostDialogComponent,
+    ConfirmationDialogComponent,
     
   ],
   imports: [

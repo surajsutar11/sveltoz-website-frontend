@@ -5,7 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiServiceService } from '../api-service.service';
 import { PostDialogComponent } from '../post-dialog/post-dialog.component';
-
+import { ToastrService } from 'ngx-toastr';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 export interface JobPost {
   id: number;
   title: string;
@@ -41,7 +42,8 @@ export class PostListComponent implements OnInit {
 
   constructor(
     private apiService: ApiServiceService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -95,14 +97,25 @@ export class PostListComponent implements OnInit {
     });
   }
 
-  deletePost(post: JobPost): void {
-    if (!confirm(`Delete post "${post.title}"?`)) {
-      return;
-    }
+ deletePost(post: JobPost): void {
+  const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+    width: '360px',
+    disableClose: true
+  });
 
-    this.apiService.deletePost(post.id).subscribe({
-      next: () => this.loadPosts(),
-      error: () => {}
-    });
-  }
+  dialogRef.afterClosed().subscribe(result => {
+    if (result === true) {  // Ensure only when true
+      this.apiService.deletePost(post.id).subscribe({
+        next: () => {
+          this.loadPosts();
+          this.toastr.success("Job post deleted successfully");
+        },
+        error: () => {
+          this.toastr.error("Failed to delete job post. Try again.");
+        }
+      });
+    }
+  });
+}
+
 }
