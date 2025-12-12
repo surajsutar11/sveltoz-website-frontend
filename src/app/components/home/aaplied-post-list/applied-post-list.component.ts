@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -22,7 +22,7 @@ export interface Application {
   styleUrls: ['./applied-post-list.component.scss'],
   standalone: false
 })
-export class AppliedPostListComponent implements OnInit {
+export class AppliedPostListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
     'id',
     'name',
@@ -35,7 +35,7 @@ export class AppliedPostListComponent implements OnInit {
   dataSource = new MatTableDataSource<Application>([]);
   isLoading = false;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private apiService: ApiServiceService) { }
@@ -50,7 +50,9 @@ export class AppliedPostListComponent implements OnInit {
       next: (res: any) => {
         const apps: Application[] = res?.data ?? res ?? [];
         this.dataSource = new MatTableDataSource(apps);
-        this.dataSource.paginator = this.paginator;
+        setTimeout(() => {
+      this.dataSource.paginator = this.paginator;
+    });
         this.dataSource.sort = this.sort;
         this.isLoading = false;
       },
@@ -60,24 +62,31 @@ export class AppliedPostListComponent implements OnInit {
     });
   }
 
- applyFilter(event: Event): void {
-  const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
-
-  this.dataSource.filterPredicate = (data: any, filter: string) => {
-    const createdDate = new Date(data.created_at).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    }).toLowerCase();
-
-    return data.name.toLowerCase().includes(filter) ||
-           data.email.toLowerCase().includes(filter) ||
-           data.post?.title.toLowerCase().includes(filter) ||
-           createdDate.includes(filter);
-  };
-
-  this.dataSource.filter = filterValue;
+ ngAfterViewInit(): void {
+  setTimeout(() => {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  });
 }
+
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+
+    this.dataSource.filterPredicate = (data: any, filter: string) => {
+      const createdDate = new Date(data.created_at).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      }).toLowerCase();
+
+      return data.name.toLowerCase().includes(filter) ||
+        data.email.toLowerCase().includes(filter) ||
+        data.post?.title.toLowerCase().includes(filter) ||
+        createdDate.includes(filter);
+    };
+
+    this.dataSource.filter = filterValue;
+  }
 
 
   openResume(row: Application): void {

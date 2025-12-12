@@ -6,11 +6,11 @@
   font-family: "Inter", sans-serif;
   overflow: hidden;
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
+  // .container {
+  //   max-width: 1200px;
+  //   margin: 0 auto;
+  //   padding: 0 20px;
+  // }
 
   .content {
     display: flex;
@@ -27,7 +27,7 @@
 
     img {
       width: 100%;
-      max-width: 450px;
+      // max-width: 450px;
       border-radius: 12px;
       object-fit: cover;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
@@ -37,6 +37,7 @@
   .text-container {
     flex: 1;
     color: #333;
+    text-align: justify; // ✨ Added
 
     .section-subtitle {
       font-size: 1.3rem;
@@ -60,6 +61,8 @@
         color: #444;
         margin-bottom: 18px;
         transition: all 0.3s ease;
+        text-align: justify !important; // ✨ Added
+        hyphens: auto; // Improve responsiveness
 
         &::before {
           content: "\25b9";
@@ -78,6 +81,9 @@
       }
     }
   }
+
+
+
 
   /* ✨ Animation */
   [data-animate] {

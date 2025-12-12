@@ -2,536 +2,84 @@
     <div class="container">
         <a class="navbar-brand text-light" [routerLink]="'inicio'">
             <img src='assets/icons/Sveltoz-logo.png' width='100' />
-        </a>
+            </a>
         <ul ngbNav #nav="ngbNav" class="menu-ul">
             <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_about", "menu", "click")'
                 class="mega-menu" (mouseenter)="openMegaMenu('about')" (mouseleave)="startCloseMegaMenu()">
                 <a ngbNavLink class="nav-link" (click)='scrollToSection("about")'><span class="underline nav-text">
-                        {{"Header.Item1" |
-                        translate}}</span></a>
+                        About Us</span></a>
                 <ng-template ngbNavContent>First content</ng-template>
-
-                <!-- Mega panel: keep it inside the li, and listen for enter/leave there too -->
-                <!-- <div class="mega-panel" [class.open]="activeMegaMenu === 'about'" (mouseenter)="cancelCloseMegaMenu()"
-                    (mouseleave)="startCloseMegaMenu()">
-
-                    <div class="mega-left">
-                        <h4>Engineering Trust Since 2015</h4>
-                        <p>Bootstrapped to 400+ engineers, delivering mission-critical systems across 5 continents.</p>
-                    </div>
-
-                    <div class="mega-middle">
-                        <h4>{{"Header.Item1"| translate}}</h4>
-                        <ul>
-                            <li (mouseenter)="setActiveSubmenu('our-story')">Our Story</li>
-                            <li (mouseenter)="setActiveSubmenu('leadership')">Leadership</li>
-                            <li (mouseenter)="setActiveSubmenu('mission')">Mission & Values</li>
-                            <li (mouseenter)="setActiveSubmenu('awards')">Awards</li>
-                            <li (mouseenter)="setActiveSubmenu('csr')">CSR & Sustainability</li>
-                            <li (mouseenter)="setActiveSubmenu('partners')">Partners</li>
-                            <li (mouseenter)="setActiveSubmenu('newsroom')">Newsroom</li>
-                            <li (mouseenter)="setActiveSubmenu('contact')">Contact</li>
-                        </ul>
-                    </div>
-
-                    <div class="mega-right">
-                        <ng-container [ngSwitch]="activeSubmenu">
-                            <div *ngSwitchCase="'our-story'">
-                                <h4>Our Story</h4>
-                                <p>Discover our journey...</p>
-                            </div>
-                            <div *ngSwitchCase="'leadership'">
-                                <h4>Leadership</h4>
-                                <p>Meet the visionaries...</p>
-                            </div>
-                            <div *ngSwitchDefault>
-                                <h4>About Us</h4>
-                                <p>Explore our story, leadership, and values.</p>
-                            </div>
-                        </ng-container>
-                    </div>
-
-                </div> -->
-
             </li>
             <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_story", "menu", "click")'
                 class="mega-menu" (mouseenter)="openMegaMenu('story')" (mouseleave)="startCloseMegaMenu()">
                 <a ngbNavLink class="nav-link" (click)='scrollToSection("story")'><span class="underline nav-text">
-                        {{"Header.Item2" |
-                        translate}}</span></a>
+                       Our Story</span></a>
                 <ng-template ngbNavContent>Second content</ng-template>
-
-
-                <!-- Full width mega menu -->
-                <!-- <div class="mega-panel" [class.open]="activeMegaMenu === 'services'"
-                    (mouseenter)="cancelCloseMegaMenu()" (mouseleave)="startCloseMegaMenu()">
-
-                    <div class="mega-left">
-                        <h4>End-to-End Digital Engineering</h4>
-                        <p>From idea to ROI—we architect, build, and run intelligent systems that scale with your
-                            business.</p>
-                    </div>
-
-                    <div class="mega-middle">
-                        <h4>{{"Header.Item2"| translate}}</h4>
-                        <ul>
-                            <li (mouseenter)="setActiveSubmenu('ai')">AI / ML Solutions</li>
-                            <li (mouseenter)="setActiveSubmenu('drone')">Drone Development</li>
-                            <li (mouseenter)="setActiveSubmenu('enterprise')">Enterprise Software</li>
-                            <li (mouseenter)="setActiveSubmenu('data')">Data Engineering</li>
-                            <li (mouseenter)="setActiveSubmenu('cloud')">Cloud & DevOps</li>
-                            <li (mouseenter)="setActiveSubmenu('ux')">UX / Product Design</li>
-                            <li (mouseenter)="setActiveSubmenu('qa')">QA & Test Automation</li>
-                            <li (mouseenter)="setActiveSubmenu('managed')">Managed Services</li>
-                        </ul>
-                    </div>
-
-                    <div class="mega-right" [ngSwitch]="activeSubmenu">
-
-                        <div *ngSwitchCase="'ai'">
-                            <h4>AI / ML Solutions</h4>
-                            <p>Computer vision, NLP, recommender engines, MLOps</p>
-                        </div>
-
-                        <div *ngSwitchCase="'drone'">
-                            <h4>Drone Development</h4>
-                            <p>Hardware + software stacks, PX4/ArduPilot customisation</p>
-                        </div>
-
-                        <div *ngSwitchCase="'enterprise'">
-                            <h4>Enterprise Software</h4>
-                            <p>.NET Core, Angular, React, micro-services, Azure/GCP</p>
-                        </div>
-
-                        <div *ngSwitchCase="'data'">
-                            <h4>Data Engineering</h4>
-                            <p>Real-time pipelines, lake-houses, Snowflake, dbt, Kafka</p>
-                        </div>
-
-                        <div *ngSwitchCase="'cloud'">
-                            <h4>Cloud & DevOps</h4>
-                            <p>IaC, Kubernetes, CI/CD, cost-optimisation, Well-Architected</p>
-                        </div>
-
-                        <div *ngSwitchCase="'ux'">
-                            <h4>UX / Product Design</h4>
-                            <p>Design sprints, accessibility audits, clickable prototypes</p>
-                        </div>
-
-                        <div *ngSwitchCase="'qa'">
-                            <h4>QA & Test Automation</h4>
-                            <p>Shift-left, Selenium, Cypress, performance, security, 24×7</p>
-                        </div>
-
-                        <div *ngSwitchCase="'managed'">
-                            <h4>Managed Services</h4>
-                            <p>24×7 SRE, SLA-backed support, FinOps monitoring</p>
-                        </div>
-
-                        <div *ngSwitchDefault>
-                            <h4>Our Services</h4>
-                            <p>Explore our full range of digital engineering solutions.</p>
-                        </div>
-
-                    </div>
-                </div> -->
             </li>
             <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_vision", "menu", "click")'
                 class="mega-menu" (mouseenter)="openMegaMenu('vision')" (mouseleave)="startCloseMegaMenu()">
                 <a ngbNavLink (click)='scrollToSection("vision")' class="nav-link"> <span class="underline nav-text">
-                        {{"Header.Item3" |
-                        translate}}</span></a>
-
-
+                        Our Vision</span></a>
                 <ng-template ngbNavContent>Portfolio Content</ng-template>
-
-                <!-- Full-screen mega menu -->
-                <!-- <div class="mega-panel" [class.open]="activeMegaMenu === 'portfolio'"
-                    (mouseenter)="cancelCloseMegaMenu()" (mouseleave)="startCloseMegaMenu()">
-
-                    <div class="mega-left">
-                        <h4>Proven Impact, Measurable ROI</h4>
-                        <p>Explore how we’ve turned complex challenges into competitive advantage for market leaders.
-                        </p>
-                    </div>
-
-                    <div class="mega-middle">
-                        <h4>{{"Header.Item3"| translate}}</h4>
-                        <ul>
-                            <li (mouseenter)="setActiveSubmenu('ai-healthcare')">AI in Healthcare</li>
-                            <li (mouseenter)="setActiveSubmenu('drone-agriculture')">Drone for Agriculture</li>
-                            <li (mouseenter)="setActiveSubmenu('fintech')">FinTech Analytics</li>
-                            <li (mouseenter)="setActiveSubmenu('industrial')">Industrial Inspections</li>
-                            <li (mouseenter)="setActiveSubmenu('retail')">Retail Personalisation</li>
-                            <li (mouseenter)="setActiveSubmenu('supply')">Supply-Chain Optimisation</li>
-                            <li (mouseenter)="setActiveSubmenu('ott')">OTT Platform Modernisation</li>
-                            <li (mouseenter)="setActiveSubmenu('legacy')">Legacy Modernisation</li>
-                        </ul>
-                    </div>
-                    <div class="mega-right" [ngSwitch]="activeSubmenu">
-
-                        <div *ngSwitchCase="'ai-healthcare'">
-                            <h4>AI in Healthcare</h4>
-                            <p>38% faster diagnosis, sepsis prediction model</p>
-                        </div>
-
-                        <div *ngSwitchCase="'drone-agriculture'">
-                            <h4>Drone for Agriculture</h4>
-                            <p>22% yield boost, multispectral crop scouting</p>
-                        </div>
-
-                        <div *ngSwitchCase="'fintech'">
-                            <h4>FinTech Analytics</h4>
-                            <p>$4M fraud saved, real-time anomaly detection</p>
-                        </div>
-
-                        <div *ngSwitchCase="'industrial'">
-                            <h4>Industrial Inspections</h4>
-                            <p>90% downtime cut, AI drone crack detection</p>
-                        </div>
-
-                        <div *ngSwitchCase="'retail'">
-                            <h4>Retail Personalisation</h4>
-                            <p>22% AOV uplift, real-time recommender engine</p>
-                        </div>
-
-                        <div *ngSwitchCase="'supply'">
-                            <h4>Supply-Chain Optimisation</h4>
-                            <p>18% fuel saved, dynamic route planner</p>
-                        </div>
-
-                        <div *ngSwitchCase="'ott'">
-                            <h4>OTT Platform Modernisation</h4>
-                            <p>50% infra cost reduced, Kubernetes migration</p>
-                        </div>
-
-                        <div *ngSwitchCase="'legacy'">
-                            <h4>Legacy Modernisation</h4>
-                            <p>3× dev velocity, monolith → micro-services</p>
-                        </div>
-
-                        <div *ngSwitchDefault>
-                            <h4>Case Studies</h4>
-                            <p>Explore our proven digital transformation success stories.</p>
-                        </div>
-
-                    </div>
-                </div> -->
             </li>
-
 
             <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_mission", "menu", "click")'
                 class="mega-menu" (mouseenter)="openMegaMenu('mission')" (mouseleave)="startCloseMegaMenu()">
                 <a ngbNavLink (click)='scrollToSection("mission")' class="nav-link"> <span class="underline nav-text">
-                        {{"Header.Item4" |
-                        translate}}</span></a>
-
-
+                        Mission</span></a>
                 <ng-template ngbNavContent>industries Content</ng-template>
-
-                <!-- Full-screen mega menu -->
-                <!-- <div class="mega-panel" [class.open]="activeMegaMenu === 'industries'"
-                    (mouseenter)="cancelCloseMegaMenu()" (mouseleave)="startCloseMegaMenu()">
-
-                    <div class="mega-left">
-                        <h4>Where Tradition Meets Tomorrow</h4>
-                        <p>Steer through the ever-changing landscape with our industry expertise. Our tailored solutions
-                            help you move forward, overcoming business challenges and achieving your goals.
-                        </p>
-                    </div>
-
-                    <div class="mega-middle">
-                        <h4>{{"Header.Item4"| translate}}</h4>
-                        <ul>
-                            <li (mouseenter)="setActiveSubmenu('media')">Media & Advertising</li>
-                            <li (mouseenter)="setActiveSubmenu('software')">Software & Hi-Tech</li>
-                            <li (mouseenter)="setActiveSubmenu('travel')">Travel & Hospitality</li>
-                            <li (mouseenter)="setActiveSubmenu('retail')">Retail & eCommerce</li>
-                            <li (mouseenter)="setActiveSubmenu('supply')">Supply Chain & Logistics</li>
-                            <li (mouseenter)="setActiveSubmenu('healthcare')">Healthcare & Life Sciences</li>
-                            <li (mouseenter)="setActiveSubmenu('fintech')">FinTech & Banking</li>
-                            <li (mouseenter)="setActiveSubmenu('manufacturing')">Manufacturing & Industrial</li>
-                        </ul>
-                    </div>
-
-                    <div class="mega-right" [ngSwitch]="activeSubmenu">
-
-                        <div *ngSwitchCase="'media'">
-                            <h4>Media & Advertising</h4>
-                            <p>Data-driven campaigns, real-time bidding, audience analytics</p>
-                        </div>
-
-                        <div *ngSwitchCase="'software'">
-                            <h4>Software & Hi-Tech</h4>
-                            <p> Cloud-native products, SaaS modernization, DevOps at scale</p>
-                        </div>
-
-                        <div *ngSwitchCase="'travel'">
-                            <h4>Travel & Hospitality</h4>
-                            <p> Personalised booking engines, revenue optimisation, chatbot concierge</p>
-                        </div>
-
-                        <div *ngSwitchCase="'retail'">
-                            <h4>Retail & eCommerce</h4>
-                            <p> Omnichannel commerce, AI recommendations, inventory forecasting</p>
-                        </div>
-
-                        <div *ngSwitchCase="'supply'">
-                            <h4>Supply Chain & Logistics</h4>
-                            <p>Route optimisation, warehouse automation, predictive fleet maintenance</p>
-                        </div>
-
-                        <div *ngSwitchCase="'healthcare'">
-                            <h4>Healthcare & Life Sciences</h4>
-                            <p>Predictive diagnostics, telehealth platforms, HIPAA-grade security</p>
-                        </div>
-
-                        <div *ngSwitchCase="'fintech'">
-                            <h4>FinTech & Banking</h4>
-                            <p> Fraud detection, reg-tech, blockchain payment rails</p>
-                        </div>
-
-                        <div *ngSwitchCase="'manufacturing'">
-                            <h4>Manufacturing & Industrial</h4>
-                            <p>Industry 4.0, digital twins, drone-based inspections</p>
-                        </div>
-
-                        <div *ngSwitchDefault>
-                            <h4>Case Studies</h4>
-                            <p>Explore our proven digital transformation success stories.</p>
-                        </div>
-
-                    </div>
-                </div> -->
             </li>
-
-            <!-- <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_careers", "menu", "click")'>
-                <a ngbNavLink (click)='scrollToSection("careers")'><span class="underline nav-text"> {{"Header.Item5" |
-                        translate}}</span></a>
-                <ng-template ngbNavContent>Second content</ng-template>
-            </li>
-
-            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_contact", "menu", "click")'>
-                <a ngbNavLink (click)='scrollToSection("contact")'><span class="underline nav-text"> {{"Header.Item6" |
-                        translate}}</span></a>
-                <ng-template ngbNavContent>Second content</ng-template>
-            </li> -->
-
             <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_culture", "menu", "click")'
                 class="mega-menu" (mouseenter)="openMegaMenu('culture')" (mouseleave)="startCloseMegaMenu()">
 
                 <a ngbNavLink (click)='scrollToSection("culture")' class="nav-link">
-                    <span class="underline nav-text">{{ "Header.Item5" | translate }}</span>
+                    <span class="underline nav-text">Culture & Values</span>
                 </a>
-
-                <!-- Full-screen mega menu -->
-                <!-- <div class="mega-panel" [class.open]="activeMegaMenu === 'careers'" (mouseenter)="cancelCloseMegaMenu()"
-                    (mouseleave)="startCloseMegaMenu()">
-
-                    <div class="mega-left">
-                        <h4>Build the Future, Grow With Us</h4>
-                        <p>A culture of curiosity, ownership, and continuous learning—plus drones, AI, and global
-                            clients.</p>
-                    </div>
-
-                    <div class="mega-middle">
-<h4>{{"Header.Item5"| translate}}</h4>
-                        <ul>
-                            <li (mouseenter)="setActiveSubmenu('open-positions')">Open Positions</li>
-                            <li (mouseenter)="setActiveSubmenu('life')">Life &#64; Sveltoz</li>
-                            <li (mouseenter)="setActiveSubmenu('graduates')">University Graduates</li>
-                            <li (mouseenter)="setActiveSubmenu('internships')">Internships</li>
-                            <li (mouseenter)="setActiveSubmenu('benefits')">Benefits</li>
-                            <li (mouseenter)="setActiveSubmenu('diversity')">Diversity & Inclusion</li>
-                            <li (mouseenter)="setActiveSubmenu('referral')">Referral Program</li>
-                            <li (mouseenter)="setActiveSubmenu('hr')">HR Speak</li>
-                        </ul>
-                    </div>
-                    <div class="mega-right" [ngSwitch]="activeSubmenu">
-                        <div *ngSwitchCase="'open-positions'">
-                            <h4>Open Positions</h4>
-                            <p>Full-stack, data, drone, cloud, UX roles</p>
-                        </div>
-                        <div *ngSwitchCase="'life'">
-                            <h4>Life &#64; Sveltoz</h4>
-                            <p>Hack-days, drone races, hybrid work, wellness credits</p>
-                        </div>
-                        <div *ngSwitchCase="'graduates'">
-                            <h4>University Graduates</h4>
-                            <p>6-month bootcamp, mentor track, fast promotions</p>
-                        </div>
-                        <div *ngSwitchCase="'internships'">
-                            <h4>Internships</h4>
-                            <p>Live client projects, stipend, pre-placement offers</p>
-                        </div>
-                        <div *ngSwitchCase="'benefits'">
-                            <h4>Benefits</h4>
-                            <p>Health, ESOPs, learning wallet, paid certifications</p>
-                        </div>
-                        <div *ngSwitchCase="'diversity'">
-                            <h4>Diversity & Inclusion</h4>
-                            <p>40% women in tech, pride ally programs</p>
-                        </div>
-                        <div *ngSwitchCase="'referral'">
-                            <h4>Referral Program</h4>
-                            <p>Refer talent, earn up-to ₹1 Lakh bonus</p>
-                        </div>
-                        <div *ngSwitchCase="'hr'">
-                            <h4>HR Speak</h4>
-                            <p>Culture handbook, policies, interview tips, FAQs</p>
-                        </div>
-                        <div *ngSwitchDefault>
-                            <h4>Careers</h4>
-                            <p>Explore opportunities and grow with us at Sveltoz.</p>
-                        </div>
-                    </div>
-                </div> -->
             </li>
 
-              <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_services", "menu", "click")'
+            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_services", "menu", "click")'
                 class="mega-menu" (mouseenter)="openMegaMenu('services')" (mouseleave)="startCloseMegaMenu()">
 
                 <a ngbNavLink (click)='scrollToSection("services")' class="nav-link" role="button">
-                    <span class="underline nav-text">{{ "Header.Item6" | translate }}</span>
+                    <span class="underline nav-text">Services</span>
                 </a>
             </li>
 
-             <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_contact", "menu", "click")'
+            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_contact", "menu", "click")'
                 class="mega-menu" (mouseenter)="openMegaMenu('contact')" (mouseleave)="startCloseMegaMenu()">
 
                 <a ngbNavLink (click)='scrollToSection("contact")' class="nav-link" role="button">
-                    <span class="underline nav-text">{{ "Header.Item7" | translate }}</span>
+                    <span class="underline nav-text">Contact</span>
                 </a>
             </li>
 
-             <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_career", "menu", "click")'
+            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_career", "menu", "click")'
                 class="mega-menu" (mouseenter)="openMegaMenu('career')" (mouseleave)="startCloseMegaMenu()">
 
                 <a ngbNavLink (click)='scrollToSection("career")' class="nav-link" role="button">
-                    <span class="underline nav-text">{{ "Header.Item8" | translate }}</span>
+                    <span class="underline nav-text">Career</span>
                 </a>
             </li>
+             <ng-container *ngIf="isAdminLoggedIn">
+            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_admin_login", "menu", "click")'
+                class="mega-menu" (mouseenter)="openMegaMenu('dashboard')" (mouseleave)="startCloseMegaMenu()">
 
-             <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_admin_login", "menu", "click")'
+                <a ngbNavLink (click)='goToAdminDashboard()' class="nav-link" role="button">
+                    <span class="underline nav-text">Dashboard</span>
+                </a>
+            </li>
+            </ng-container>
+
+            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_admin_login", "menu", "click")'
                 class="mega-menu" (mouseenter)="openMegaMenu('admin-login')" (mouseleave)="startCloseMegaMenu()">
 
                 <a ngbNavLink (click)='goToAdminPanel()' class="nav-link" role="button">
-                    <span class="underline nav-text">Admin-Login</span>
+                    <span class="underline nav-text"> {{ isAdminLoggedIn ? "Logout" : "Login" }}</span>
                 </a>
             </li>
-
-            <!-- <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_contact", "menu", "click")'
-                class="mega-menu" (mouseenter)="openMegaMenu('contact')" (mouseleave)="startCloseMegaMenu()">
-
-                <a ngbNavLink (click)='scrollToSection("contact")' class="nav-link">
-                    <span class="underline nav-text">{{ "Header.Item6" | translate }}</span>
-                </a> -->
-
-                <!-- Full-screen mega menu -->
-                <!-- <div class="mega-panel" [class.open]="activeMegaMenu === 'contact'" (mouseenter)="cancelCloseMegaMenu()"
-                    (mouseleave)="startCloseMegaMenu()">
-
-                    <div class="mega-left">
-                        <h4>Let’s Talk Innovation</h4>
-                        <p>One conversation can unlock your next big edge—reach out today.</p>
-                    </div>
-
-                    <div class="mega-middle">
-                        <h4>{{"Header.Item6"| translate}}</h4>
-                        <ul>
-                            <li (mouseenter)="setActiveSubmenu('proposal')">Request a Proposal</li>
-                            <li (mouseenter)="setActiveSubmenu('demo')">Schedule a Demo</li>
-                            <li (mouseenter)="setActiveSubmenu('locations')">Office Locations</li>
-                            <li (mouseenter)="setActiveSubmenu('support')">Support Desk</li>
-                            <li (mouseenter)="setActiveSubmenu('partner')">Partner With Us</li>
-                            <li (mouseenter)="setActiveSubmenu('media')">Media Enquiries</li>
-                            <li (mouseenter)="setActiveSubmenu('career-helpline')">Career Helpline</li>
-                            <li (mouseenter)="setActiveSubmenu('general')">General Enquiries</li>
-                        </ul>
-                    </div>
-
-                    <div class="mega-right" [ngSwitch]="activeSubmenu">
-                        <div *ngSwitchCase="'proposal'">
-                            <h4>Request a Proposal</h4>
-                            <p>24-hr response, NDA-friendly, fixed-price/T&M</p>
-                        </div>
-                        <div *ngSwitchCase="'demo'">
-                            <h4>Schedule a Demo</h4>
-                            <p>Live drone flight, AI dashboard walkthrough</p>
-                        </div>
-                        <div *ngSwitchCase="'locations'">
-                            <h4>Office Locations</h4>
-                            <p>Pune HQ, Austin, London, Singapore on map</p>
-                        </div>
-                        <div *ngSwitchCase="'support'">
-                            <h4>Support Desk</h4>
-                            <p>24×7 ticket portal, 2-hr SLA, live chat</p>
-                        </div>
-                        <div *ngSwitchCase="'partner'">
-                            <h4>Partner With Us</h4>
-                            <p>Channel, OEM, academia, startup ecosystem forms</p>
-                        </div>
-                        <div *ngSwitchCase="'media'">
-                            <h4>Media Enquiries</h4>
-                            <p>Spokesperson quotes, podcast invites, analyst briefings</p>
-                        </div>
-                        <div *ngSwitchCase="'career-helpline'">
-                            <h4>Career Helpline</h4>
-                            <p>WhatsApp bot, instant application status updates</p>
-                        </div>
-                        <div *ngSwitchCase="'general'">
-                            <h4>General Enquiries</h4>
-                            <p>Email, phone, social handles, directions, parking info</p>
-                        </div>
-                        <div *ngSwitchDefault>
-                            <h4>Contact</h4>
-                            <p>Reach out to explore collaboration and innovation.</p>
-                        </div>
-                    </div>
-                </div> -->
-            <!-- </li> -->
-
-
-            <!-- <li ngbNavItem>
-                <app-dynamic-button
-                  [text]="'Header.cvBtn' | translate"
-                  (buttonClick)="downloadCV()"
-                  variant="primary"
-                  size="small"
-                  analyticsEvent="click_cv"
-                  analyticsCategory="menu"
-                  analyticsLabel="cv_download">
-                </app-dynamic-button>
-            </li> -->
-            <!-- <li>
-                <div ngbDropdown class="d-inline-block">
-                    <div class="language-container" id="dropdownForm1" ngbDropdownToggle>
-                        <img *ngIf='languageFormControl.value == "en"' width="20px" src="https://www.worldometers.info/img/flags/us-flag.gif" alt="English">
-                        <span *ngIf='languageFormControl.value == "en"' class="flag-text">English</span>
-
-                        <img *ngIf='languageFormControl.value == "es"' width="20px" src="https://www.worldometers.info/img/flags/sp-flag.gif" alt="Español">
-                        <span *ngIf='languageFormControl.value == "es"' class="flag-text">Español</span>
-                        <svg class='arrow-language' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"/></svg>
-                    </div>
-                    <div ngbDropdownMenu aria-labelledby="dropdownForm1">
-                        <div (click)='changeLanguage("es")' style='border-bottom-left-radius: 0px !important;border-bottom-right-radius: 0px !important;' class="language-container language-container-selector active" [class.active]='languageFormControl.value == "es"'>
-                            <img width="20px" src="https://www.worldometers.info/img/flags/sp-flag.gif" alt="Español">
-                            <span class="flag-text">Español</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2 arrow-active" viewBox="0 0 16 16">
-                                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                              </svg>
-                        </div>
-                        <div (click)='changeLanguage("en")' style="margin-top: 1px !important; border-top-left-radius: 0px !important; border-top-right-radius: 0px !important;" class="language-container language-container-selector" [class.active]='languageFormControl.value == "en"'>
-                            <img width="20px" src="https://www.worldometers.info/img/flags/us-flag.gif" alt="English">
-                            <span class="flag-text">English</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2 arrow-active" viewBox="0 0 16 16">
-                                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </li> -->
         </ul>
+
+
         <div class="menu-wrapper">
             <div [class.animate]='responsiveMenuVisible' (click)='responsiveMenuVisible = !responsiveMenuVisible'
                 class="hamburger-menu"></div>
@@ -542,84 +90,49 @@
                     <ol>
                         <li (click)='analyticsService.sendAnalyticEvent("click_about", "menu", "click")'>
                             <a (click)='scrollToSection("about")'>
-                                {{"Header.Item1" | translate}}
+                                About Us
                             </a>
                         </li>
                         <li (click)='analyticsService.sendAnalyticEvent("click_story", "menu", "click")'>
                             <a (click)='scrollToSection("story")'>
-                                {{"Header.Item2" | translate}}
+                               Our Story
                             </a>
                         </li>
                         <li (click)='analyticsService.sendAnalyticEvent("click_vision", "menu", "click")'>
                             <a (click)='scrollToSection("vision")'>
-                                {{"Header.Item3" | translate}}
+                                Our Vision
                             </a>
                         </li>
                         <li (click)='analyticsService.sendAnalyticEvent("click_mission", "menu", "click")'>
                             <a (click)='scrollToSection("mission")'>
-                                {{"Header.Item4" | translate}}
+                               Mission
                             </a>
                         </li>
                         <li (click)='analyticsService.sendAnalyticEvent("click_culture", "menu", "click")'>
                             <a (click)='scrollToSection("culture")'>
-                                {{"Header.Item5" | translate}}
+                                Culture & Values
                             </a>
                         </li>
                         <li (click)='analyticsService.sendAnalyticEvent("click_services", "menu", "click")'>
                             <a (click)='scrollToSection("services")'>
-                                {{"Header.Item6" | translate}}
+                                Services
                             </a>
                         </li>
                         <li (click)='analyticsService.sendAnalyticEvent("click_contact", "menu", "click")'>
                             <a (click)='scrollToSection("contact")'>
-                                {{"Header.Item7" | translate}}
+                               Contact
                             </a>
                         </li>
                         <li (click)='analyticsService.sendAnalyticEvent("click_career", "menu", "click")'>
                             <a (click)='scrollToSection("career")'>
-                                {{"Header.Item8" | translate}}
+                               Career
                             </a>
                         </li>
                         <li (click)='analyticsService.sendAnalyticEvent("click_admin_login", "menu", "click")'>
                             <a (click)='goToAdminPanel()'>
-                                Admin-Login
+                                 {{ isAdminLoggedIn ? "Logout" : "Login" }}
                             </a>
                         </li>
-
-                        <!-- <li>
-                          <app-dynamic-button
-                            [text]="'Header.cvBtn' | translate"
-                            (buttonClick)="downloadCV()"
-                            variant="primary"
-                            size="small"
-                            analyticsEvent="click_cv"
-                            analyticsCategory="menu"
-                            analyticsLabel="cv_download">
-                          </app-dynamic-button>
-                      </li>
-                      <li>
-                            <div class="language-container">
-                                <div (click)='changeLanguage("es")' style='border-bottom-left-radius: 0px !important;border-bottom-right-radius: 0px !important;' class="language-container language-container-selector active" [class.active]='languageFormControl.value == "es"'>
-                                    <img src="https://www.worldometers.info/img/flags/sp-flag.gif" alt="Español">
-                                    <span class="flag-text">Español</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2 arrow-active" viewBox="0 0 16 16">
-                                        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                                      </svg>
-                                </div>
-                                <div (click)='changeLanguage("en")' style="margin-top: 1px !important; border-top-left-radius: 0px !important; border-top-right-radius: 0px !important;" class="language-container language-container-selector" [class.active]='languageFormControl.value == "en"'>
-                                    <img src="https://www.worldometers.info/img/flags/us-flag.gif" alt="English">
-                                    <span class="flag-text">English</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2 arrow-active" viewBox="0 0 16 16">
-                                        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                      </li> -->
-                        <!-- <li>
-                            <img src="https://www.worldometers.info/img/flags/us-flag.gif" alt="English">
-                        </li> -->
-
-
                     </ol>
                 </nav>
             </aside>

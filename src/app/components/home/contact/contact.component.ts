@@ -21,7 +21,11 @@ export class ContactComponent {
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({
-      name: ['', [Validators.required, Validators.pattern(/.*\S.*/)]],
+      name: ['', [
+        Validators.required,
+        Validators.pattern(/^(?!\s*$)[A-Za-z ]+$/)
+      ]],
+
       email: [
         '',
         [
@@ -41,8 +45,7 @@ export class ContactComponent {
     this.apiService.createContact(this.contactForm.value).subscribe({
       next: () => {
         this.isSubmitting = false;
-        console.log('Message sent successfully!');
-        this.toastr.success('Message sent successfully!', 'Success');
+        this.toastr.success('Message sent successfully!');
         this.contactForm.reset();
       },
 
@@ -55,7 +58,7 @@ export class ContactComponent {
           errorMessage = err.error.detail[0].msg;   // Extract backend message
         }
 
-        this.toastr.error(errorMessage, 'Error');
+        this.toastr.error(errorMessage);
       }
 
     });

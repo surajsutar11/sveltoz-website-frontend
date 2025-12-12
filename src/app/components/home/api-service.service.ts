@@ -61,6 +61,18 @@ export class ApiServiceService {
       );
   }
 
+  forgetPassword(post: any): Observable<any> {
+    // POST /posts  (protected if you decide so on backend)
+    const headers = this.getAuthHeaders();
+    return this.http.post(`${this.apiUrl}/auth/forgot/request`, post, { headers });
+  }
+
+    resetPassword(post: any): Observable<any> {
+    // POST /posts  (protected if you decide so on backend)
+    const headers = this.getAuthHeaders();
+    return this.http.post(`${this.apiUrl}/auth/forgot/reset`, post, { headers });
+  }
+
   // ========= POSTS =========
 
   createPost(post: any): Observable<any> {
@@ -68,10 +80,15 @@ export class ApiServiceService {
     const headers = this.getAuthHeaders();
     return this.http.post(`${this.apiUrl}/posts`, post, { headers });
   }
+   listGetPostsWithoutToken(): Observable<any> {
+    // GET /posts
+    return this.http.get(`${this.apiUrl}/get/posts`);
+  }
 
   listPosts(): Observable<any> {
     // GET /posts
-    return this.http.get(`${this.apiUrl}/posts`);
+     const headers = this.getAuthHeaders();
+    return this.http.get(`${this.apiUrl}/posts`, { headers });
   }
   listOfApplications(): Observable<any> {
     // GET /posts
@@ -80,7 +97,8 @@ export class ApiServiceService {
 
   getPost(id: number): Observable<any> {
     // GET /posts/{id}
-    return this.http.get(`${this.apiUrl}/posts/${id}`);
+     const headers = this.getAuthHeaders();
+    return this.http.get(`${this.apiUrl}/posts/${id}`, { headers });
   }
 
   updatePost(id: number, post: any): Observable<any> {
@@ -133,9 +151,9 @@ export class ApiServiceService {
   }
 
   applyJob(data: any): Observable<any> {
-    console.log("API Service - applyJob called with data:", data);
     return this.http.post(this.apiUrl + "/apply", data);
   }
+  
   downloadResume(applicationId: number) {
   return this.http.get(
     `${this.apiUrl}/applications/${applicationId}/resume`,

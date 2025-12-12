@@ -5,9 +5,9 @@
   background: #fff;
   font-family: "Inter", sans-serif;
 
-  .container {
-    max-width: 1200px;
-  }
+  // .container {
+  //   max-width: 1200px;
+  // }
 
   .about-subtitle {
     font-size: 1.2rem;
@@ -31,11 +31,22 @@
     margin-bottom: 15px;
   }
 
+
+  .about-content p,
+  .about-values p,
+  .about-values .values-list li {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+
   .about-values {
     background: linear-gradient(160deg, #f9f9f9, #eef6ef);
     border-radius: 10px;
-    padding: 30px 40px;
+    padding: 30px 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    text-align: justify;
+    text-justify: inter-word;
 
     .values-title {
       font-size: 1.6rem;
@@ -58,7 +69,7 @@
 
         &:before {
           content: "▹";
-          color: #347f0c;
+          color: #00337c;
           position: absolute;
           left: 0;
           font-size: 18px;
@@ -70,11 +81,12 @@
 
   /* Responsive Design */
   @media (max-width: 992px) {
-    .row {
-      flex-direction: column;
-    }
+    // .row {
+    //   flex-direction: column;
+    // }
 
-    .about-content, .about-values {
+    .about-content,
+    .about-values {
       width: 100%;
       text-align: left;
       padding: 0 15px;

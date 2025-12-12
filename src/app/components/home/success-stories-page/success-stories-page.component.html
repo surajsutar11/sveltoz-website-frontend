@@ -3,7 +3,7 @@
 
     <div class="stories-grid">
       <div class="story-card" *ngFor="let story of stories">
-        
+
         <!-- Image -->
         <div class="image-wrapper">
           <img [src]="story.image" alt="{{ story.title }}" />
@@ -16,11 +16,14 @@
         <!-- Title + Published -->
         <div class="info">
           <h4 class="domain">{{ story.domain }}</h4>
-          <!-- <p class="date">Posted On: {{ story.date }}</p> -->
           <h3 class="title">{{ story.title }}</h3>
           <p class="description">{{ story.description }}</p>
-          <p class="description">{{ story.impact }}</p>
+
+          <ul class="impact-list">
+            <li *ngFor="let item of story.impact">{{ item }}</li>
+          </ul>
         </div>
+
 
         <!-- <a class="read-more" href="#">Read Full Story →</a> -->
 

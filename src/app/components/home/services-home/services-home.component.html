@@ -9,33 +9,15 @@
         </p>
       </div>
     </div>
-
-    <!-- <div class="row">
-      <div
-        class="col-lg-6 col-md-6 col-sm-12"
-        *ngFor="let service of services"
-        data-animate="fadeInUp"
-      >
-        <div class="service-card">
-          <div class="service-icon">{{ service.icon }}</div>
-          <h6 class="values-heading">{{ service.title }}</h6>
-          <ul class="points">
-            <li *ngFor="let point of service.items">{{ point }}</li>
-          </ul>
-        </div>
+    <div class="services-container">
+      <div class="service-card" *ngFor="let category of services">
+        <h2>{{ category.title }}</h2>
+        <ul class="points">
+          <li *ngFor="let item of category.points">
+            {{ item }}
+          </li>
+        </ul>
       </div>
-    </div> -->
- <div class="services-container">
-  <div class="service-card" *ngFor="let category of services">
-    <h2>{{ category.title }}</h2>
-    <ul class="points">
-      <li *ngFor="let item of category.points">
-        {{ item }}
-      </li>
-    </ul>
+    </div>
   </div>
-</div>
-
-
-</div>
 </section>

@@ -4,6 +4,8 @@
     padding: 100px 0px 0px;
     background: #ffffff;
     font-family: "Inter", sans-serif;
+    text-align: justify;
+    text-justify: inter-word;
 
     .section-subtitle {
         font-size: 1.6rem;
@@ -28,38 +30,41 @@
         margin-bottom: 15px;
     }
 
-     .points {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .points {
+        list-style: none;
+        padding: 0;
+        margin: 0;
 
-      li {
-        position: relative;
-        padding-left: 35px;
-        font-size: 16px;
-        line-height: 1.8;
-        color: #444;
-        margin-bottom: 18px;
-        transition: all 0.3s ease;
+        li {
+            position: relative;
+            padding-left: 35px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 18px;
+            transition: all 0.3s ease;
+            text-align: justify;
+            text-justify: inter-word;
 
-        &::before {
-          content: "\25b9";
-          position: absolute;
-          left: 0;
-          top: 0;
-          color: #00337c;
-          font-size: 22px;
-          line-height: 1.4;
-        }
+            &::before {
+                content: "\25b9";
+                position: absolute;
+                left: 0;
+                top: 0;
+                color: #00337c;
+                font-size: 22px;
+                line-height: 1.4;
+            }
 
-        &:hover {
-          transform: translateX(4px);
-          color: #000;
+            &:hover {
+                transform: translateX(4px);
+                color: #000;
+            }
+
+            strong {
+                color: #00337c; // professional blue accent
+            }
         }
-        strong {
-          color: #00337c; // professional blue accent
-        }
-      }
     }
 
     .closing {
@@ -103,10 +108,10 @@
             }
         }
 
-        .culture-img {
-            margin-top: 30px;
-            width: 90%;
-        }
+        // .culture-img {
+        //     margin-top: 30px;
+        //     width: 90%;
+        // }
     }
 
     @media (max-width: 576px) {

@@ -1,13 +1,13 @@
 <owl-carousel-o [options]="customOptions" class="banner-carousel">
-  <ng-template carouselSlide class="">
+  <ng-template carouselSlide class="sliders">
     <div class="slide-container position-relative overflow-hidden owl-stage">
 
       <!-- 🔹 Content -->
       <div class="content-wrapper slider-containent">
         <div class="text-section text-white">
-          <h6 class="banner-name">{{ 'Banner.Slide1.Title' | translate }}</h6>
+          <h6 class="banner-name">Building the Future <br> with Intelligent <br>Machines</h6>
 
-          <p class="banner-description mt-3" [innerHTML]="'Banner.Slide1.Description' | translate"></p>
+          <p class="banner-description mt-3" [innerHTML]="'Transforming complex data into actionable intelligence with AI and ML innovation..'"></p>
 
           <!-- 🔹 Bullet Points Section -->
           <ul class="banner-bullets mt-3">
@@ -17,11 +17,11 @@
           </ul>
 
           <div class="banner-buttons mt-4">
-            <a class="btn btn-outline-light me-3" href="#know-how">
-              Know How <span class="arrow">➔</span>
+            <a class="btn btn-outline-light me-3" [disabled]="true" aria-readonly="true">
+              Know How
             </a>
             <a class="btn btn-light text-dark" (click)="goToSuccessStories()">
-              Success Stories <span class="arrow">➔</span>
+              Success Stories
             </a>
           </div>
         </div>
@@ -33,13 +33,12 @@
 
     </div>
   </ng-template>
-
-  <ng-template carouselSlide>
+  <ng-template carouselSlide  class="sliders">
     <div class="slide-container position-relative overflow-hidden owl-stage">
       <div class="content-wrapper slider-containent">
         <div class="text-section text-white">
-          <h6 class="banner-name">{{ 'Banner.Slide2.Title' | translate }}</h6>
-          <p class="banner-description mt-3" [innerHTML]="'Banner.Slide2.Description' | translate"></p>
+          <h6 class="banner-name">Engineering the Skies <br> with Precision and <br> Intelligence</h6>
+          <p class="banner-description mt-3" [innerHTML]="'Developing advanced drone systems for industrial, agricultural, and logistics applications.'"></p>
 
           <ul class="banner-bullets mt-3">
             <li>Custom-Built Drone Hardware & Software</li>
@@ -48,10 +47,10 @@
           </ul>
           <div class="banner-buttons mt-4">
             <a class="btn btn-outline-light me-3" href="#know-how">
-              Know How <span class="arrow">➔</span>
+              Know How
             </a>
             <a class="btn btn-light text-dark" (click)="goToSuccessStories()">
-              Success Stories <span class="arrow">➔</span>
+              Success Stories
             </a>
           </div>
         </div>
@@ -62,15 +61,13 @@
       </div>
     </div>
   </ng-template>
-
-
-  <ng-template carouselSlide>
+  <ng-template carouselSlide  class="sliders">
     <div class="slide-container position-relative overflow-hidden owl-stage">
   
       <div class="content-wrapper slider-containent">
         <div class="text-section text-white">
-          <h6 class="banner-name">{{ 'Banner.Slide3.Title' | translate }}</h6>
-          <p class="banner-description mt-3" [innerHTML]="'Banner.Slide3.Description' | translate"></p>
+          <h6 class="banner-name">Connecting Intelligence <br> with Engineering <br> Excellence</h6>
+          <p class="banner-description mt-3" [innerHTML]="'Delivering next-gen enterprise software, leT, and automation solutions that power intelligent ecosystems.'"></p>
           <ul class="banner-bullets mt-3">
             <li>End-to-End Product Engineering</li>
             <li>Data Analytics & IoT Solutions
@@ -80,10 +77,10 @@
           </ul>
           <div class="banner-buttons mt-4">
             <a class="btn btn-outline-light me-3" href="#know-how">
-              Know How <span class="arrow">➔</span>
+              Know How
             </a>
             <a class="btn btn-light text-dark" (click)="goToSuccessStories()">
-              Success Stories <span class="arrow">➔</span>
+              Success Stories
             </a>
           </div>
         </div>

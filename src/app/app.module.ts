@@ -15,7 +15,6 @@ import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/
 import {
   TranslateLoader,
   TranslateModule,
-  TranslateService,
 } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MainNavComponent } from './components/general/main-nav/main-nav.component';
@@ -80,6 +79,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
-    NgbModule], providers: [TranslateService, provideHttpClient(withInterceptorsFromDi())]
+    NgbModule], providers: [provideHttpClient(withInterceptorsFromDi())]
 })
 export class AppModule { }

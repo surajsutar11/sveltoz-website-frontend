@@ -27,7 +27,11 @@ export class JobApplyModalComponent {
 
   ngOnInit(): void {
     this.applyForm = this.fb.group({
-      name: ['', [Validators.required, Validators.pattern(/.*\S.*/)]],
+      name: ['', [
+        Validators.required,
+        Validators.pattern(/^(?!\s*$)[A-Za-z ]+$/)
+      ]],
+
       email: [
         '',
         [
@@ -68,8 +72,7 @@ export class JobApplyModalComponent {
     // CALL API
     this.apiService.applyJob(formData).subscribe({
       next: (res) => {
-        console.log("response", res);
-       this.toastr.success("Application submitted successfully!");
+        this.toastr.success("Application submitted successfully!");
         this.dialogRef.close(true);
       },
       error: (err) => {

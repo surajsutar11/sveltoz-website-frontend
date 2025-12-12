@@ -6,29 +6,26 @@
   font-family: "Inter", sans-serif;
   overflow: hidden;
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
+  // .container {
+  //   max-width: 1200px;
+  //   margin: 0 auto;
+  //   padding: 0 20px;
+  // }
 
   .content {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    gap: 33px;
     flex-wrap: wrap;
   }
 
   /* Left side image */
   .image-container {
     flex: 1;
-    display: flex;
-    justify-content: center;
 
     img {
       width: 100%;
-      max-width: 450px;
       border-radius: 12px;
       object-fit: cover;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
@@ -62,6 +59,11 @@
         color: #444;
         margin-bottom: 18px;
         transition: all 0.3s ease;
+        text-align: justify;
+        /* ⭐ Added this */
+        text-justify: inter-word;
+        /* Optional for spacing */
+
 
         &::before {
           content: "▹";

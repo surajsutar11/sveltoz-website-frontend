@@ -17,7 +17,8 @@
       <p class="desc">{{ job.description }}</p>
 
       <div class="apply-btn-div">
-        <button class="apply-btn" (click)="apply(job)">Apply Now</button>
+        <button class="apply-btn" (click)="apply(job)" [class.disabled-btn]="isAdminLoggedIn"
+        [disabled]="isAdminLoggedIn">Apply Now</button>
       </div>
     </div>
   </div>

@@ -296,8 +296,6 @@ export class BannerComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // Configurar el video para carga lazy hasta que termine el splash screen
     video.preload = 'none';
-
-    console.log('Video configurado para carga diferida');
   }
 
 

@@ -16,15 +16,27 @@
 
     @media (max-width: 992px) {
       grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
     }
 
     @media (max-width: 600px) {
       grid-template-columns: 1fr;
+      gap: 25px;
     }
   }
 
   .story-card {
     cursor: pointer;
+    background: #f9fafc; // 🔹 Card background
+    border: 1px solid #e2e7f1; // 🔹 Border
+    border-radius: 10px; // 🔹 Border radius
+    padding: 15px; // 🔹 Inner spacing
+    transition: 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08); // 🔹 Hover shadow
+      transform: translateY(-3px);
+    }
 
     .image-wrapper {
       position: relative;
@@ -32,6 +44,7 @@
       height: 220px;
       overflow: hidden;
       border-radius: 8px;
+      margin-bottom: 10px; // gap after image
 
       img {
         width: 100%;
@@ -61,24 +74,16 @@
       background: #eef3ff;
       color: #00337c;
       padding: 5px 12px;
-      margin-top: 10px;
       font-size: 12px;
+      margin-bottom: 8px;
       border-radius: 4px;
     }
 
     .info {
-      margin-top: 12px;
-
       .domain {
         font-size: 14px;
         font-weight: 600;
         color: #666;
-      }
-
-      .date {
-        font-size: 13px;
-        color: #999;
-        margin-bottom: 8px;
       }
 
       .title {
@@ -87,6 +92,7 @@
         line-height: 1.4;
         margin-bottom: 10px;
         color: #081828;
+        text-align: justify;
       }
 
       .description {
@@ -94,7 +100,19 @@
         color: #333;
         line-height: 1.7;
         margin-bottom: 15px;
+        text-align: justify; // ✔ Justified text
       }
+
+      .impact-list {
+        margin-top: 10px;
+        padding-left: 18px;
+         font-size: 15px;
+        color: #333;
+        line-height: 1.7;
+        margin-bottom: 15px;
+        text-align: justify;
+      }
+
     }
 
     .read-more {
@@ -107,6 +125,31 @@
 
       &:hover {
         border-bottom: 1px solid #00337c;
+      }
+    }
+  }
+
+  /* 🔹 Responsive Typography */
+  @media (max-width: 992px) {
+    .story-card .info {
+      .title {
+        font-size: 18px;
+      }
+
+      .description {
+        font-size: 14px;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .story-card .info {
+      .title {
+        font-size: 16px;
+      }
+
+      .description {
+        font-size: 13px;
       }
     }
   }

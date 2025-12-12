@@ -23,7 +23,7 @@ export class SplashScreenComponent implements OnInit, OnDestroy {
   constructor(private translate: TranslateService) {}
 
   ngOnInit(): void {
-    this.setupTranslations();
+    // this.setupTranslations();
     this.initLottieAnimation();
     this.startSplashTimer();
   }
@@ -37,11 +37,11 @@ export class SplashScreenComponent implements OnInit, OnDestroy {
     }
   }
 
-  private setupTranslations(): void {
-    this.translate.get('Loading').subscribe((text: string) => {
-      this.loadingText = text || 'Loading...';
-    });
-  }
+  // private setupTranslations(): void {
+  //   this.translate.get('Loading').subscribe((text: string) => {
+  //     this.loadingText = text || 'Loading...';
+  //   });
+  // }
 
   private initLottieAnimation(): void {
     try {

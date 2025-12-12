@@ -10,15 +10,15 @@ export class LanguageService {
   language: "en";
 
   constructor(
-    public translateService: TranslateService,
+    // public translateService: TranslateService,
     private location: Location,
   ) {}
 
   initLanguage(){
-    this.translateService.addLangs(["en"])
+    // this.translateService.addLangs(["en"])
     let language = navigator.language || (navigator as any).userLanguage;
     language =  "en"
-    this.translateService.setDefaultLang(language)
+    // this.translateService.setDefaultLang(language)
 
     // Change the URL without navigate:
     this.location.go(language)
@@ -27,7 +27,7 @@ export class LanguageService {
   }
 
   changeLanguage(language){
-    this.translateService.setDefaultLang(language)
+    // this.translateService.setDefaultLang(language)
     this.location.go(language)
     this.language=language
   }

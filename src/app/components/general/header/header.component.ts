@@ -2,12 +2,8 @@ import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angu
 import { Router } from '@angular/router';
 import { trigger, style, query, transition, stagger, animate } from '@angular/animations'
 import { AnalyticsService } from 'src/app/services/analytics/analytics.service';
-import { TranslateService } from '@ngx-translate/core';
 import { UntypedFormControl } from '@angular/forms';
 import { LanguageService } from 'src/app/services/language/language.service';
-import { ThisReceiver } from '@angular/compiler';
-
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -27,10 +23,8 @@ import { ThisReceiver } from '@angular/compiler';
   standalone: false
 })
 
-
-
 export class HeaderComponent implements OnInit {
-
+ isAdminLoggedIn: boolean = false;
   responsiveMenuVisible: Boolean = false;
   pageYPosition: number;
   languageFormControl: UntypedFormControl = new UntypedFormControl();
@@ -46,10 +40,16 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+if (localStorage.getItem('hasLoggedIn')) {
+  this.isAdminLoggedIn = true;
+ this.router.navigate(['/admin']);
+} else {
+  this.isAdminLoggedIn = false;
+}
 
-    this.languageFormControl.valueChanges.subscribe(val => this.languageService.changeLanguage(val))
+    // this.languageFormControl.valueChanges.subscribe(val => this.languageService.changeLanguage(val))
 
-    this.languageFormControl.setValue(this.languageService.language)
+    // this.languageFormControl.setValue(this.languageService.language)
 
   }
 
@@ -61,50 +61,64 @@ export class HeaderComponent implements OnInit {
     }
     this.responsiveMenuVisible = false;
   }
-  scrollToSection(sectionId: string) {
-  const element = document.getElementById(sectionId);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+//   scrollToSection(sectionId: string) {
+//   const element = document.getElementById(sectionId);
+//   if (element) {
+//     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+//   }
+// }
+
+scrollToSection(sectionId: string) {
+  if (this.router.url !== '/') {
+    this.router.navigate(['/'], { fragment: sectionId });
+
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 300);
+
+  } else {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }
 
+
 goToServicePage() {
-    console.log('Navigating to service...');
     this.router.navigate(['/service']);
     this.responsiveMenuVisible = false;
   }
 
-  goToAdminPanel() {
-    console.log('Navigating to admin panel...');
+ goToAdminPanel() {
+  if (!this.isAdminLoggedIn) {
+    // Admin Login logic
     this.router.navigate(['/admin-panel']);
+    // this.isAdminLoggedIn = true;
+    this.responsiveMenuVisible = false;
+  } else {
+    // Admin Logout logic
+    localStorage.removeItem('hasLoggedIn');
+    localStorage.removeItem('token');
+    window.location.reload();
+    this.isAdminLoggedIn = false;
+    this.router.navigate(['/home']); 
     this.responsiveMenuVisible = false;
   }
-  downloadCV() {
-    this.languageService.translateService.get("Header.cvName").subscribe(val => {
-      this.cvName = val
-      console.log(val)
-      // app url
-      let url = window.location.href;
+}
 
-      // Open a new window with the CV
-      window.open(url + "/../assets/cv/" + this.cvName, "_blank");
-    })
-
-  }
+goToAdminDashboard(){
+  this.router.navigate(['/admin']);
+}
 
   @HostListener('window:scroll', ['getScrollPosition($event)'])
   getScrollPosition(event) {
     this.pageYPosition = window.pageYOffset
   }
 
-  changeLanguage(language: string) {
-    this.languageFormControl.setValue(language);
-  }
-
-  // properties
-
-
-  // open immediately and cancel pending close
   openMegaMenu(menu: string) {
     if (this.closeMegaMenuTimeout) {
       clearTimeout(this.closeMegaMenuTimeout);
@@ -113,7 +127,6 @@ goToServicePage() {
     this.activeMegaMenu = menu;
   }
 
-  // start delayed close (small delay avoids flicker when the mouse moves between columns)
   startCloseMegaMenu(delay = 180) {
     if (this.closeMegaMenuTimeout) {
       clearTimeout(this.closeMegaMenuTimeout);

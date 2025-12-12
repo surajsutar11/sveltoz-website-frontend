@@ -103,3 +103,11 @@
     }
   }
 }
+.apply-btn {
+  cursor: pointer !important;
+}
+
+.apply-btn.disabled-btn {
+  cursor: not-allowed !important;
+  opacity: 0.6;
+}
