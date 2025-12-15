@@ -17,7 +17,7 @@
 
   <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
 
-  <div class="table-wrapper" *ngIf="!isLoading">
+  <div class="table-wrapper" [hidden]="isLoading">
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z2">
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
@@ -72,8 +72,8 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
-    <!-- <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons>
-    </mat-paginator> -->
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons>
+    </mat-paginator>
 
   </div>
 </div>

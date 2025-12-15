@@ -84,7 +84,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommonModule,
     NgbNavModule,
     CarouselModule,
-    MatPaginatorModule,
     GeneralModule,
     BrowserAnimationsModule,
     MatTabsModule,

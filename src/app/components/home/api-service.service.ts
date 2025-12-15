@@ -92,7 +92,8 @@ export class ApiServiceService {
   }
   listOfApplications(): Observable<any> {
     // GET /posts
-    return this.http.get(`${this.apiUrl}/applications`);
+     const headers = this.getAuthHeaders();
+    return this.http.get(`${this.apiUrl}/applications`,{ headers });
   }
 
   getPost(id: number): Observable<any> {

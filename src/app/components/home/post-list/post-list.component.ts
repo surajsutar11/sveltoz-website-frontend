@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -24,7 +24,7 @@ export interface JobPost {
   styleUrls: ['./post-list.component.scss'],
   standalone: false
 })
-export class PostListComponent implements OnInit {
+export class PostListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
     'id',
     'title',
@@ -44,7 +44,7 @@ export class PostListComponent implements OnInit {
     private apiService: ApiServiceService,
     private dialog: MatDialog,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadPosts();
@@ -55,9 +55,7 @@ export class PostListComponent implements OnInit {
     this.apiService.listPosts().subscribe({
       next: (res: any) => {
         const posts: JobPost[] = res?.data ?? res ?? [];
-        this.dataSource = new MatTableDataSource(posts);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+        this.dataSource.data = posts;
         this.isLoading = false;
       },
       error: () => {
@@ -65,6 +63,11 @@ export class PostListComponent implements OnInit {
       }
     });
   }
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
 
   applyFilter(event: Event): void {
     const value = (event.target as HTMLInputElement).value;
@@ -97,25 +100,25 @@ export class PostListComponent implements OnInit {
     });
   }
 
- deletePost(post: JobPost): void {
-  const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-    width: '360px',
-    disableClose: true
-  });
+  deletePost(post: JobPost): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '360px',
+      disableClose: true
+    });
 
-  dialogRef.afterClosed().subscribe(result => {
-    if (result === true) {  // Ensure only when true
-      this.apiService.deletePost(post.id).subscribe({
-        next: () => {
-          this.loadPosts();
-          this.toastr.success("Job post deleted successfully");
-        },
-        error: () => {
-          this.toastr.error("Failed to delete job post. Try again.");
-        }
-      });
-    }
-  });
-}
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {  // Ensure only when true
+        this.apiService.deletePost(post.id).subscribe({
+          next: () => {
+            this.loadPosts();
+            this.toastr.success("Job post deleted successfully");
+          },
+          error: () => {
+            this.toastr.error("Failed to delete job post. Try again.");
+          }
+        });
+      }
+    });
+  }
 
 }

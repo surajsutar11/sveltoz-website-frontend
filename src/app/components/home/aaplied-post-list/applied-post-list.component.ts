@@ -35,7 +35,7 @@ export class AppliedPostListComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Application>([]);
   isLoading = false;
 
-  @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private apiService: ApiServiceService) { }
@@ -49,11 +49,7 @@ export class AppliedPostListComponent implements OnInit, AfterViewInit {
     this.apiService.listOfApplications().subscribe({
       next: (res: any) => {
         const apps: Application[] = res?.data ?? res ?? [];
-        this.dataSource = new MatTableDataSource(apps);
-        setTimeout(() => {
-      this.dataSource.paginator = this.paginator;
-    });
-        this.dataSource.sort = this.sort;
+        this.dataSource.data = apps;   // ✅ FIX
         this.isLoading = false;
       },
       error: () => {
@@ -62,12 +58,11 @@ export class AppliedPostListComponent implements OnInit, AfterViewInit {
     });
   }
 
- ngAfterViewInit(): void {
-  setTimeout(() => {
+
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-  });
-}
+  }
 
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();

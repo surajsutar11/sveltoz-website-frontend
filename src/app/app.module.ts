@@ -30,6 +30,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ToastrModule } from 'ngx-toastr';
+import { MatPaginatorModule } from '@angular/material/paginator';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -60,6 +61,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatButtonModule,     // <button mat-button>, <button mat-raised-button> etc
     MatIconModule,
     MatCheckboxModule,
+    MatPaginatorModule,
    ToastrModule.forRoot({
   positionClass: 'toast-top-right',
   preventDuplicates: true,
