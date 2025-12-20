@@ -4,7 +4,11 @@
     <p>We are always looking for passionate, talented individuals who want to innovate and create real impact.</p>
   </div>
 
-  <div class="job-list">
+  <div class="job-list" [ngClass]="{
+       'one-job': jobs.length === 1,
+       'two-jobs': jobs.length === 2
+     }">
+
     <div class="job-card" *ngFor="let job of jobs">
       <h3>{{ job.title }}</h3>
 
@@ -14,11 +18,32 @@
         <span><i class="fa fa-clock-o"></i> {{ job.job_type }}</span>
       </div>
 
-      <p class="desc">{{ job.description }}</p>
+      <!-- <pre class="desc">{{ job.description }}</pre> -->
+     <!-- <div class="desc-wrapper" [class.expanded]="isExpanded(job.id)">
+  <ul class="desc-list">
+    <li *ngFor="let point of formatDescription(job.description)">
+      {{ point }}
+    </li>
+  </ul>
+</div> -->
+
+<div class="desc-wrapper" [class.expanded]="isExpanded(job.id)">
+  <div
+    class="job-desc"
+    [innerHTML]="sanitizeHtml(job.description)">
+  </div>
+</div>
+
+
+<span class="read-more"
+      (click)="toggleDescription(job.id)">
+  {{ isExpanded(job.id) ? 'Show less' : 'Read more' }}
+</span>
+
 
       <div class="apply-btn-div">
         <button class="apply-btn" (click)="apply(job)" [class.disabled-btn]="isAdminLoggedIn"
-        [disabled]="isAdminLoggedIn">Apply Now</button>
+          [disabled]="isAdminLoggedIn">Apply Now</button>
       </div>
     </div>
   </div>

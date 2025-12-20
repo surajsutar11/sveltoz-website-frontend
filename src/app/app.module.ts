@@ -11,7 +11,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import {
   TranslateLoader,
   TranslateModule,
@@ -31,6 +31,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ToastrModule } from 'ngx-toastr';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -62,6 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatIconModule,
     MatCheckboxModule,
     MatPaginatorModule,
+    CKEditorModule,
    ToastrModule.forRoot({
   positionClass: 'toast-top-right',
   preventDuplicates: true,
@@ -81,6 +84,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
-    NgbModule], providers: [provideHttpClient(withInterceptorsFromDi())]
+    NgbModule], providers: [provideHttpClient(withInterceptorsFromDi()),{
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }]
 })
 export class AppModule { }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ApiServiceService } from '../api-service.service';
 import { ToastrService } from 'ngx-toastr';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export interface JobPost {
   id?: number;  // optional for new posts
@@ -31,7 +32,7 @@ export class PostDialogComponent implements OnInit {
   postForm!: FormGroup;
   isEditMode = false;
   isSaving = false;
-
+ public Editor = ClassicEditor;
   constructor(
     private fb: FormBuilder,
     private apiService: ApiServiceService,

@@ -61,7 +61,7 @@
                 </a>
             </li>
              <ng-container *ngIf="isAdminLoggedIn">
-            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_admin_login", "menu", "click")'
+            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_dashboard", "menu", "click")'
                 class="mega-menu" (mouseenter)="openMegaMenu('dashboard')" (mouseleave)="startCloseMegaMenu()">
 
                 <a ngbNavLink (click)='goToAdminDashboard()' class="nav-link" role="button">
@@ -126,6 +126,11 @@
                         <li (click)='analyticsService.sendAnalyticEvent("click_career", "menu", "click")'>
                             <a (click)='scrollToSection("career")'>
                                Career
+                            </a>
+                        </li>
+                         <li *ngIf="isAdminLoggedIn" (click)='analyticsService.sendAnalyticEvent("click_dashboard", "menu", "click")'>
+                            <a (click)='goToAdminDashboard()'>
+                               Dashboard
                             </a>
                         </li>
                         <li (click)='analyticsService.sendAnalyticEvent("click_admin_login", "menu", "click")'>

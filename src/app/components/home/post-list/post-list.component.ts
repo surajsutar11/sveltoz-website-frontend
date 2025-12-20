@@ -56,6 +56,7 @@ export class PostListComponent implements OnInit, AfterViewInit {
       next: (res: any) => {
         const posts: JobPost[] = res?.data ?? res ?? [];
         this.dataSource.data = posts;
+         this.dataSource.paginator = this.paginator;
         this.isLoading = false;
       },
       error: () => {
@@ -76,8 +77,11 @@ export class PostListComponent implements OnInit, AfterViewInit {
 
   openAddDialog(): void {
     const dialogRef = this.dialog.open(PostDialogComponent, {
-      width: '1000px',
-      data: null
+    width: '800px',
+  height: '90vh',        // 🔥 REQUIRED
+  maxHeight: '90vh',
+  panelClass: 'job-post-dialog',
+  autoFocus: false
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -89,7 +93,11 @@ export class PostListComponent implements OnInit, AfterViewInit {
 
   openEditDialog(post: JobPost): void {
     const dialogRef = this.dialog.open(PostDialogComponent, {
-      width: '700px',
+       width: '800px',
+  height: '90vh',        // 🔥 REQUIRED
+  maxHeight: '90vh',
+  panelClass: 'job-post-dialog',
+  autoFocus: false,
       data: post
     });
 

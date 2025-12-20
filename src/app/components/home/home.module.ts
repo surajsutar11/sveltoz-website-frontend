@@ -46,7 +46,7 @@ import { PostDialogComponent } from './post-dialog/post-dialog.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ToastrModule } from 'ngx-toastr';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -100,6 +100,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatTooltipModule,
     ReactiveFormsModule,
     MatCheckboxModule,
+    CKEditorModule,
   ToastrModule.forRoot({
   positionClass: 'toast-top-right',
   preventDuplicates: true,

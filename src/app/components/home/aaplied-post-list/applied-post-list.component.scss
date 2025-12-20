@@ -227,4 +227,82 @@
   border-color: #00337C;      /* focus border color */
   box-shadow: 0 0 2px rgba(0, 51, 124, 0.4);
 }
+::ng-deep .mat-paginator {
+  background: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 14px 0 !important;
+  font-size: 15px !important;
+  color: #444;
+}
 
+/* Range label (1–5 of 66) */
+::ng-deep .mat-paginator-range-label {
+  font-size: 15px !important;
+  margin: 0 14px !important;
+}
+
+/* Items per page label */
+::ng-deep .mat-paginator-page-size-label {
+  font-size: 15px !important;
+  margin-right: 8px !important;
+}
+
+/* Dropdown area */
+::ng-deep .mat-paginator-page-size {
+  display: flex !important;
+  align-items: center !important;
+  margin-right: 18px !important;
+}
+
+/* Actual select dropdown */
+::ng-deep .mat-paginator-page-size-select {
+  font-size: 15px !important;
+  padding: 6px 10px !important;
+  border: 1px solid #bdbdbd !important;
+  border-radius: 6px !important;
+  line-height: 20px !important;
+}
+
+/* Navigation buttons */
+::ng-deep .mat-paginator-navigation-previous,
+::ng-deep .mat-paginator-navigation-next,
+::ng-deep .mat-paginator-navigation-first,
+::ng-deep .mat-paginator-navigation-last {
+  font-size: 18px;
+  margin: 0 4px !important;
+  color: #555 !important;
+}
+
+::ng-deep .mat-paginator-navigation-first:hover,
+::ng-deep .mat-paginator-navigation-last:hover,
+::ng-deep .mat-paginator-navigation-next:hover,
+::ng-deep .mat-paginator-navigation-previous:hover {
+  color: #2196f3 !important;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  ::ng-deep .mat-paginator {
+    flex-wrap: wrap !important;
+    padding: 10px !important;
+  }
+
+  ::ng-deep .mat-paginator-page-size {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 10px !important;
+  }
+
+  ::ng-deep .mat-paginator-range-label {
+    width: 100%;
+    text-align: center;
+    margin-top: 6px !important;
+  }
+
+}
+ ::ng-deep div#mat-select-1-panel {
+    color: black;
+}

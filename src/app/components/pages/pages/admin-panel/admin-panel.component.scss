@@ -1,6 +1,6 @@
 .auth-section {
   background: #ffffff;
-  padding: 100px 0 60px;
+  padding: 100px 0 150px;
   font-family: "Inter", sans-serif;
   overflow: hidden;
 
@@ -9,7 +9,6 @@
     margin: 0 auto;
     padding: 20px 20px;
   }
-
   .section-title {
     font-size: 2rem;
     font-weight: 600;
@@ -204,7 +203,7 @@
 
   @media (max-width: 992px) {
     .auth-container {
-      flex-direction: column-reverse;
+      flex-direction: column;
       gap: 32px;
     }
 

@@ -1,15 +1,56 @@
-// import { Injectable } from '@angular/core';
-// import { HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import {
+  HttpEvent,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+  HttpErrorResponse
+} from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
-// @Injectable()
-// export class AuthInterceptor implements HttpInterceptor {
-//   intercept(req: HttpRequest<any>, next: HttpHandler) {
-//     const token = localStorage.getItem('token');
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor {
 
-//     const modifiedReq = req.clone({
-//       setHeaders: token ? { Authorization: `Bearer ${token}` } : {}
-//     });
+  private isTokenExpiredToastShown = false;
 
-//     return next.handle(modifiedReq);
-//   }
-// }
+  constructor(
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
+
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
+
+    return next.handle(request).pipe(
+      catchError((error: HttpErrorResponse) => {
+
+        if (error.status === 401) {
+
+          // Show toast only once
+          if (!this.isTokenExpiredToastShown) {
+            this.isTokenExpiredToastShown = true;
+            this.toastr.error(
+              'Your session has expired. Please login again.'
+            );
+          }
+
+          // Clear auth data
+          localStorage.clear();
+
+          // Redirect to login
+          this.router.navigate(['/admin-panel']).then(() => {
+            // reset flag after navigation
+            this.isTokenExpiredToastShown = false;
+          });
+        }
+
+        return throwError(() => error);
+      })
+    );
+  }
+}

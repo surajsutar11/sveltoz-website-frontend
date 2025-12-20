@@ -69,11 +69,15 @@
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;  sticky: true"></tr>
+      <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr> -->
+
     </table>
+    <div class="paginator-card">
     <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons>
     </mat-paginator>
-
+</div>
   </div>
 </div>

@@ -356,3 +356,68 @@
   background-color: #f8d7da;
   color: #721c24;
 }
+
+/* paginator select height */
+::ng-deep .mat-mdc-paginator-page-size-select {
+  height: 36px !important;
+}
+
+/* trigger */
+::ng-deep .mat-mdc-paginator-page-size-select .mat-mdc-select-trigger {
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* value (number) */
+::ng-deep .mat-mdc-paginator-page-size-select .mat-mdc-select-value {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100% !important;
+  padding: 0 !important;
+}
+
+/* 🔥 ARROW WRAPPER – this is the real fix */
+::ng-deep .mat-mdc-paginator-page-size-select
+.mat-mdc-select-arrow-wrapper {
+  display: grid !important;
+  place-items: center !important;
+  height: 100% !important;
+  margin: 0 !important;
+}
+
+/* 🔥 SVG arrow itself */
+::ng-deep .mat-mdc-paginator-page-size-select
+.mat-mdc-select-arrow {
+  display: block !important;
+  transform: translateY(0) !important;
+  margin: 0 !important;
+}
+::ng-deep .mat-mdc-paginator-page-size-select .mat-mdc-select-arrow {
+  opacity: 0 !important;
+}
+
+::ng-deep .mat-mdc-paginator-page-size-select .mat-mdc-select-trigger::after {
+  content: '▼';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  pointer-events: none;
+}
+/* Mat-select dropdown panel (CDK overlay) */
+::ng-deep .cdk-overlay-pane .mat-mdc-select-panel {
+  background: #ffffff !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+}
+
+::ng-deep .mat-mdc-paginator-container {
+    font-size: 15px;
+    color: black;
+}
+::ng-deep div#mat-select-0-panel {
+    color: black;
+}

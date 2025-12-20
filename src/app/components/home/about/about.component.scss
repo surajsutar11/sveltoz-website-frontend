@@ -1,51 +1,61 @@
 @use "./../../../../variables" as *;
 
 .about-section {
-  padding: 100px 0px 0px;
+  padding: 100px 0;
   background: #fff;
   font-family: "Inter", sans-serif;
 
-  // .container {
-  //   max-width: 1200px;
-  // }
-
-  .about-subtitle {
-    font-size: 1.2rem;
-    color: #00337c;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 10px;
+  .row {
+    display: flex;
+    align-items: stretch; // IMPORTANT: equal height columns
   }
 
-  .about-title {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #000;
-    margin-bottom: 20px;
+  .about-content,
+  .about-values {
+    height: 100%;
   }
 
-  .about-content p {
-    color: #444;
-    font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 15px;
+  /* Left content */
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .about-subtitle {
+      font-size: 1.2rem;
+      color: #00337c;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .about-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #000;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #444;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 15px;
+      text-align: justify;
+      text-justify: inter-word;
+    }
   }
 
-
-  .about-content p,
-  .about-values p,
-  .about-values .values-list li {
-    text-justify: inter-word;
-  }
-
-
+  /* Right content */
   .about-values {
     background: linear-gradient(160deg, #f9f9f9, #eef6ef);
     border-radius: 10px;
-    padding: 30px 20px;
+    padding: 35px 25px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    text-align: justify;
-    text-justify: inter-word;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     .values-title {
       font-size: 1.6rem;
@@ -54,10 +64,18 @@
       font-weight: 600;
     }
 
+    p {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
     .values-list {
       list-style: none;
       padding: 0;
-      margin-top: 15px;
+      margin: 0;
 
       li {
         position: relative;
@@ -68,32 +86,26 @@
 
         &:before {
           content: "▹";
-          color: #00337c;
           position: absolute;
           left: 0;
+          color: #00337c;
           font-size: 18px;
-          line-height: 1;
         }
       }
     }
   }
 
-  /* Responsive Design */
+  /* Tablet */
   @media (max-width: 992px) {
-    // .row {
-    //   flex-direction: column;
-    // }
-
+    padding: 70px 0;
+    
     .about-content,
     .about-values {
       width: 100%;
-      text-align: left;
-      padding: 0 15px;
     }
 
     .about-values {
       margin-top: 30px;
-      padding: 25px;
     }
 
     .about-title {
@@ -101,6 +113,7 @@
     }
   }
 
+  /* Mobile */
   @media (max-width: 600px) {
     padding: 50px 0;
 
@@ -108,12 +121,13 @@
       font-size: 1.8rem;
     }
 
-    .about-content p {
+    .about-content p,
+    .about-values p {
       font-size: 0.95rem;
     }
 
     .values-title {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
     }
   }
 }

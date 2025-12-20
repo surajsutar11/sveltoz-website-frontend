@@ -50,6 +50,7 @@ export class AppliedPostListComponent implements OnInit, AfterViewInit {
       next: (res: any) => {
         const apps: Application[] = res?.data ?? res ?? [];
         this.dataSource.data = apps;   // ✅ FIX
+         this.dataSource.paginator = this.paginator;
         this.isLoading = false;
       },
       error: () => {

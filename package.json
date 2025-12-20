@@ -29,6 +29,8 @@
     "@angular/platform-browser-dynamic": "^20.0.6",
     "@angular/router": "^20.0.6",
     "@angular/service-worker": "^20.0.6",
+    "@ckeditor/ckeditor5-angular": "^11.0.0",
+    "@ckeditor/ckeditor5-build-classic": "^41.4.2",
     "@fortawesome/fontawesome-free": "^5.14.0",
     "@ng-bootstrap/ng-bootstrap": "^19.0.1",
     "@ngx-translate/core": "^15.0.0",

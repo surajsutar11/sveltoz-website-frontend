@@ -1,83 +1,97 @@
-<h2 class="title-job-post">
-  {{ isEditMode ? 'Edit Job Post' : 'Add Job Post' }}
-</h2>
+<div class="dialog-wrapper" cdkScrollable>
 
-<form [formGroup]="postForm" class="post-form">
+  <!-- HEADER -->
+  <h2 class="title-job-post">
+    {{ isEditMode ? 'Edit Job Post' : 'Add Job Post' }}
+  </h2>
 
-  <!-- Row 1 -->
-  <div class="form-row">
-    <div class="form-group">
-      <label>Title <span>*</span></label>
-      <input type="text" formControlName="title" placeholder="Enter job title" />
-      <small *ngIf="postForm.get('title')?.invalid && postForm.get('title')?.touched">
-        Title is required
-      </small>
-    </div>
+  <!-- BODY (SCROLL HERE) -->
+  <div class="dialog-body">
+    <form [formGroup]="postForm" class="post-form">
 
-    <div class="form-group">
-      <label>Department <span>*</span></label>
-      <input type="text" formControlName="department" placeholder="Enter department" />
-      <small *ngIf="postForm.get('department')?.invalid && postForm.get('department')?.touched">
-        Department is required
-      </small>
-    </div>
+      <!-- Row 1 -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Title <span>*</span></label>
+          <input type="text" formControlName="title" placeholder="Enter job title" />
+          <small *ngIf="postForm.get('title')?.invalid && postForm.get('title')?.touched">
+            Title is required
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label>Department <span>*</span></label>
+          <input type="text" formControlName="department" placeholder="Enter department" />
+          <small *ngIf="postForm.get('department')?.invalid && postForm.get('department')?.touched">
+            Department is required
+          </small>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Location <span>*</span></label>
+          <input type="text" formControlName="location" placeholder="Enter location" />
+          <small *ngIf="postForm.get('location')?.invalid && postForm.get('location')?.touched">
+            Location is required
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label>Job Type <span>*</span></label>
+          <select formControlName="job_type">
+            <option value="">Select Type</option>
+            <option value="Full-time">Full-time</option>
+            <option value="Part-time">Part-time</option>
+            <option value="Contract">Contract</option>
+            <option value="Internship">Internship</option>
+          </select>
+          <small *ngIf="postForm.get('job_type')?.invalid && postForm.get('job_type')?.touched">
+            Job type is required
+          </small>
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Salary <span>*</span></label>
+          <input type="text" formControlName="salary" placeholder="Example: 6–8 LPA" />
+          <small *ngIf="postForm.get('salary')?.invalid && postForm.get('salary')?.touched">
+            Salary is required
+          </small>
+        </div>
+
+        <div class="form-group checkbox-area">
+          <label>Status</label>
+          <input type="checkbox" formControlName="is_active" />
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="form-group full">
+        <label>Description <span>*</span></label>
+
+        <ckeditor
+          formControlName="description"
+          [editor]="Editor">
+        </ckeditor>
+
+        <small *ngIf="postForm.get('description')?.invalid && postForm.get('description')?.touched">
+          Description is required
+        </small>
+      </div>
+
+    </form>
   </div>
 
-  <!-- Row 2 -->
-  <div class="form-row">
-    <div class="form-group">
-      <label>Location <span>*</span></label>
-      <input type="text" formControlName="location" placeholder="Enter location" />
-      <small *ngIf="postForm.get('location')?.invalid && postForm.get('location')?.touched">
-        Location is required
-      </small>
-    </div>
-
-    <div class="form-group">
-      <label>Job Type <span>*</span></label>
-      <select formControlName="job_type">
-        <option value="">Select Type</option>
-        <option value="Full-time">Full-time</option>
-        <option value="Part-time">Part-time</option>
-        <option value="Contract">Contract</option>
-        <option value="Internship">Internship</option>
-      </select>
-      <small *ngIf="postForm.get('job_type')?.invalid && postForm.get('job_type')?.touched">
-        Job type is required
-      </small>
-    </div>
-  </div>
-
-  <!-- Row 3 -->
-  <div class="form-row">
-    <div class="form-group">
-      <label>Salary <span>*</span></label>
-      <input type="text" formControlName="salary" placeholder="Example: 6–8 LPA" />
-      <small *ngIf="postForm.get('salary')?.invalid && postForm.get('salary')?.touched">
-        Salary is required
-      </small>
-    </div>
-
-    <div class="form-group checkbox-area">
-      <label>Status</label>
-      <input type="checkbox" formControlName="is_active" />
-    </div>
-  </div>
-
-  <!-- Description -->
-  <div class="form-group full">
-    <label>Description <span>*</span></label>
-    <textarea formControlName="description" placeholder="Job role description..."></textarea>
-    <small *ngIf="postForm.get('description')?.invalid && postForm.get('description')?.touched">
-      Description is required
-    </small>
-  </div>
-
+  <!-- FOOTER -->
   <div class="form-actions">
     <button type="button" class="btn cancel" (click)="onCancel()">Cancel</button>
     <button type="submit" class="btn submit" (click)="onSave()" [disabled]="postForm.invalid">
-      {{ isEditMode ? "Save Changes" : "Add Job Post" }}
+      {{ isEditMode ? 'Save Changes' : 'Add Job Post' }}
     </button>
   </div>
 
-</form>
+</div>
