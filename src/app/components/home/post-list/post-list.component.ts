@@ -30,6 +30,7 @@ export class PostListComponent implements OnInit, AfterViewInit {
     'title',
     'location',
     'job_type',
+    'salary',
     'status',
     'created_at',
     'actions'
@@ -50,13 +51,20 @@ export class PostListComponent implements OnInit, AfterViewInit {
     this.loadPosts();
   }
 
+    ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
   loadPosts(): void {
     this.isLoading = true;
     this.apiService.listPosts().subscribe({
       next: (res: any) => {
         const posts: JobPost[] = res?.data ?? res ?? [];
         this.dataSource.data = posts;
-         this.dataSource.paginator = this.paginator;
+
+          this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
         this.isLoading = false;
       },
       error: () => {
@@ -64,15 +72,21 @@ export class PostListComponent implements OnInit, AfterViewInit {
       }
     });
   }
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
 
 
-  applyFilter(event: Event): void {
-    const value = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = value.trim().toLowerCase();
+  // applyFilter(event: Event): void {
+  //   const value = (event.target as HTMLInputElement).value;
+  //   this.dataSource.filter = value.trim().toLowerCase();
+  // }
+
+    applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    // 🔥 Reset to first page after filtering
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   openAddDialog(): void {
@@ -129,4 +143,5 @@ export class PostListComponent implements OnInit, AfterViewInit {
     });
   }
 
+  
 }

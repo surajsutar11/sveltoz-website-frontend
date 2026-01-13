@@ -55,29 +55,35 @@
 
       <!-- Row 3 -->
       <div class="form-row">
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label>Salary <span>*</span></label>
-          <input type="text" formControlName="salary" placeholder="Example: 6–8 LPA" />
+          <input type="text" formControlName="salary" placeholder="Example: 6 LPA" />
           <small *ngIf="postForm.get('salary')?.invalid && postForm.get('salary')?.touched">
             Salary is required
           </small>
+        </div> -->
+
+        <div class="form-group">
+          <label>Salary (LPA) <span>*</span></label>
+          <input type="number" formControlName="salary" placeholder="Example: 6" min="0" />
+          <small *ngIf="postForm.get('salary')?.invalid && postForm.get('salary')?.touched">
+            Salary is required and must be a number
+          </small>
         </div>
+
 
         <div class="form-group checkbox-area">
           <label>Status</label>
-          <input type="checkbox" formControlName="is_active" />
+          <input type="checkbox" formControlName="is_active"  class="status-input"/>
         </div>
       </div>
 
       <!-- Description -->
-      <div class="form-group full">
+      <div class="form-row">
         <label>Description <span>*</span></label>
 
-        <ckeditor
-          formControlName="description"
-          [editor]="Editor">
+        <ckeditor formControlName="description" [editor]="Editor" [config]="editorConfig">
         </ckeditor>
-
         <small *ngIf="postForm.get('description')?.invalid && postForm.get('description')?.touched">
           Description is required
         </small>

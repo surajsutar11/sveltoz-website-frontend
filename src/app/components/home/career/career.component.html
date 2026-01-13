@@ -13,13 +13,14 @@
       <h3>{{ job.title }}</h3>
 
       <div class="meta">
-        <span><i class="fa fa-building"></i> {{ job.department }}</span>
+        <span><i class="fa fa-sitemap"></i> {{ job.department }}</span>
         <span><i class="fa fa-map-marker"></i> {{ job.location }}</span>
-        <span><i class="fa fa-clock-o"></i> {{ job.job_type }}</span>
+        <span><i class="fa fa-clock"></i>{{ job.job_type }}</span>
+        <span><i class="fa fa-inr"></i> {{ job.salary }}</span>
       </div>
 
       <!-- <pre class="desc">{{ job.description }}</pre> -->
-     <!-- <div class="desc-wrapper" [class.expanded]="isExpanded(job.id)">
+      <!-- <div class="desc-wrapper" [class.expanded]="isExpanded(job.id)">
   <ul class="desc-list">
     <li *ngFor="let point of formatDescription(job.description)">
       {{ point }}
@@ -27,18 +28,15 @@
   </ul>
 </div> -->
 
-<div class="desc-wrapper" [class.expanded]="isExpanded(job.id)">
-  <div
-    class="job-desc"
-    [innerHTML]="sanitizeHtml(job.description)">
-  </div>
-</div>
+      <div class="desc-wrapper" [class.expanded]="isExpanded(job.id)">
+        <div class="job-desc" [innerHTML]="sanitizeHtml(job.description)">
+        </div>
+      </div>
 
 
-<span class="read-more"
-      (click)="toggleDescription(job.id)">
-  {{ isExpanded(job.id) ? 'Show less' : 'Read more' }}
-</span>
+      <span class="read-more" *ngIf="shouldShowReadMore(job.description)" (click)="toggleDescription(job.id)">
+        {{ isExpanded(job.id) ? 'Show less' : 'Read more' }}
+      </span>
 
 
       <div class="apply-btn-div">

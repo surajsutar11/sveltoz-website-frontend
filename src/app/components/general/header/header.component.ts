@@ -71,7 +71,7 @@ if (localStorage.getItem('hasLoggedIn')) {
 scrollToSection(sectionId: string) {
   if (this.router.url !== '/') {
     this.router.navigate(['/'], { fragment: sectionId });
-
+    this.responsiveMenuVisible = false;
     setTimeout(() => {
       const element = document.getElementById(sectionId);
       if (element) {
@@ -80,6 +80,7 @@ scrollToSection(sectionId: string) {
     }, 300);
 
   } else {
+    this.responsiveMenuVisible = false;
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -112,6 +113,7 @@ goToServicePage() {
 
 goToAdminDashboard(){
   this.router.navigate(['/admin']);
+  this.responsiveMenuVisible = false;
 }
 
   @HostListener('window:scroll', ['getScrollPosition($event)'])

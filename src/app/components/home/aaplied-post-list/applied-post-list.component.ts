@@ -29,6 +29,7 @@ export class AppliedPostListComponent implements OnInit, AfterViewInit {
     'email',
     'post_title',
     // 'status',
+    'salary',
     'created_at',
     'actions'
   ];

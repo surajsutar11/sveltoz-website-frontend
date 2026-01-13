@@ -21,12 +21,13 @@ import { AnalyticsService } from 'src/app/services/analytics/analytics.service';
     standalone: false
 })
 export class FooterComponent implements OnInit {
-
+currentYear: number = new Date().getFullYear();
   constructor(
     public analyticsService: AnalyticsService
   ) { }
 
   ngOnInit(): void {
+  
   }
 
 }

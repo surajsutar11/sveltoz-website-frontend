@@ -70,4 +70,13 @@ sanitizeHtml(html: string): SafeHtml {
       data: job,
     });
   }
+
+  shouldShowReadMore(description: string): boolean {
+  if (!description) return false;
+
+  // Remove HTML tags to get pure text length
+  const text = description.replace(/<[^>]*>/g, '').trim();
+  return text.length > 200;
+}
+
 }

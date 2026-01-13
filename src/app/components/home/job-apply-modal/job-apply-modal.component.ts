@@ -69,7 +69,6 @@ export class JobApplyModalComponent {
     formData.append('notes', this.applyForm.value.notes);
     formData.append('resume', this.resumeUploaded!);
     formData.append('post_id', this.applyForm.value.post_id);
-    // CALL API
     this.apiService.applyJob(formData).subscribe({
       next: (res) => {
         this.toastr.success("Application submitted successfully!");

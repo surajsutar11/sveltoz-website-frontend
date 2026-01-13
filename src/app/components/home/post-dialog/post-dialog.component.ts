@@ -33,6 +33,23 @@ export class PostDialogComponent implements OnInit {
   isEditMode = false;
   isSaving = false;
  public Editor = ClassicEditor;
+
+public editorConfig = {
+  toolbar: [
+    'heading',
+    '|',
+    'bold',
+    'italic',
+    'link',
+    'bulletedList',
+    'numberedList',
+    '|',
+    'blockQuote',
+    'undo',
+    'redo'
+  ]
+};
+
   constructor(
     private fb: FormBuilder,
     private apiService: ApiServiceService,
@@ -44,59 +61,108 @@ export class PostDialogComponent implements OnInit {
   ngOnInit(): void {
     this.isEditMode = !!this.data;
 
-    this.postForm = this.fb.group({
-  title: ['', Validators.required],
-  department: ['', Validators.required],
-  location: ['', Validators.required],
+this.postForm = this.fb.group({
+  title: [
+    '',
+    [
+      Validators.required,
+      Validators.pattern(/^(?!\s*$).+/) // no empty spaces
+    ]
+  ],
+  department: [
+    '',
+    [
+      Validators.required,
+      Validators.pattern(/^(?!\s*$).+/)
+    ]
+  ],
+  location: [
+    '',
+    [
+      Validators.required,
+      Validators.pattern(/^(?!\s*$).+/)
+    ]
+  ],
   job_type: ['', Validators.required],
-  salary: ['', Validators.required],
+  salary: [
+  '',
+  [
+      Validators.required,
+      Validators.min(0),
+      Validators.pattern(/^\d+(\.\d{1,2})?$/) // allows decimals
+    ]
+],
+
   is_active: [true],
-  description: ['', Validators.required]
+  description: [
+    '',
+    [
+      Validators.required,
+      Validators.pattern(/^(?!\s*$).+/)
+    ]
+  ]
 });
+
 if (this.data) {
-      this.isEditMode = true;
-      this.postForm.patchValue(this.data);
-    }
+  this.isEditMode = true;
+
+  this.postForm.patchValue({
+    ...this.data,
+    salary: this.extractSalaryNumber(this.data.salary)
+  });
+}
+
 
   }
 
-  onSave(): void {
-    if (this.postForm.invalid) {
-      this.postForm.markAllAsTouched();
-      return;
-    }
+  extractSalaryNumber(salary: string | null): number | null {
+  if (!salary) return null;
 
-    this.isSaving = true;
-    const payload = this.postForm.value;
-    // payload shape now matches:
-    // { department, job_type, title, description, location, salary, is_active }
+  const match = salary.match(/\d+(\.\d+)?/);
+  return match ? Number(match[0]) : null;
+}
 
-    if (this.isEditMode && this.data?.id != null) {
-      this.apiService.updatePost(this.data.id, payload).subscribe({
-        next: () => {
-          this.isSaving = false;
-          this.toastr.success("Job post updated successfully");
-          this.dialogRef.close('saved');
-        },
-        error: () => {
-          this.isSaving = false;
-          this.toastr.error("Failed to update job post. Try again.");
-        }
-      });
-    } else {
-      this.apiService.createPost(payload).subscribe({
-        next: () => {
-          this.isSaving = false;
-          this.toastr.success("Job post created successfully");
-          this.dialogRef.close('saved');
-        },
-        error: () => {
-          this.isSaving = false;
-          this.toastr.error("Failed to create job post. Try again.");
-        }
-      });
-    }
+
+ onSave(): void {
+  if (this.postForm.invalid) {
+    this.postForm.markAllAsTouched();
+    return;
   }
+
+  this.isSaving = true;
+
+  const payload = {
+    ...this.postForm.value,
+    salary: `${this.postForm.value.salary} LPA`
+  };
+
+  if (this.isEditMode && this.data?.id != null) {
+    this.apiService.updatePost(this.data.id, payload).subscribe({
+      next: () => {
+        this.isSaving = false;
+        this.toastr.success("Job post updated successfully");
+        this.dialogRef.close('saved');
+      },
+      error: () => {
+        this.isSaving = false;
+        this.toastr.error("Failed to update job post. Try again.");
+      }
+    });
+  } else {
+    this.apiService.createPost(payload).subscribe({
+      next: () => {
+        this.isSaving = false;
+        this.toastr.success("Job post created successfully");
+        this.dialogRef.close('saved');
+      },
+      error: () => {
+        this.isSaving = false;
+        this.toastr.error("Failed to create job post. Try again.");
+      }
+    });
+  }
+}
+
 
   onCancel(): void {
     this.dialogRef.close();

@@ -125,31 +125,31 @@ export class ApiServiceService {
   // ========= APPLY JOB (multipart/form-data) =========
 
 
-  applyForJob(body: {
-    name: string;
-    email: string;
-    phone: string;
-    post_id: number;
-    resume?: any;
-    notes?: string;
-    body: string;
-  }): Observable<any> {
-    const formData = new FormData();
-    formData.append('name', body.name);
-    formData.append('email', body.email);
-    formData.append('phone', body.phone);
-    formData.append('post_id', body.post_id.toString());
-    formData.append('body', body.body);
-    if (body.resume) {
-      formData.append('resume', body.resume);
-    }
+  // applyForJob(body: {
+  //   name: string;
+  //   email: string;
+  //   phone: string;
+  //   post_id: number;
+  //   resume?: any;
+  //   notes?: string;
+  //   body: string;
+  // }): Observable<any> {
+  //   const formData = new FormData();
+  //   formData.append('name', body.name);
+  //   formData.append('email', body.email);
+  //   formData.append('phone', body.phone);
+  //   formData.append('post_id', body.post_id.toString());
+  //   formData.append('body', body.body);
+  //   if (body.resume) {
+  //     formData.append('resume', body.resume);
+  //   }
 
-    if (body.notes) {
-      formData.append('notes', body.notes);
-    }
+  //   if (body.notes) {
+  //     formData.append('notes', body.notes);
+  //   }
 
-    return this.http.post(`${this.apiUrl}/apply`, formData);
-  }
+  //   return this.http.post(`${this.apiUrl}/apply`, formData);
+  // }
 
   applyJob(data: any): Observable<any> {
     return this.http.post(this.apiUrl + "/apply", data);
