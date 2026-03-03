@@ -18,7 +18,7 @@ export class AdminPanelComponent implements OnInit {
   errorMessage = '';
   isForgotPasswordMode = false;
   showOtpSection = false;
-
+  showPassword = false;
   constructor(
     private fb: FormBuilder,
     private jobService: ApiServiceService,
@@ -45,7 +45,6 @@ export class AdminPanelComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = this.authService.isAuthenticated();
-
     // Load saved login from sessionStorage
     const savedEmail = sessionStorage.getItem('savedEmail');
     const savedPassword = sessionStorage.getItem('savedPassword');
@@ -58,7 +57,9 @@ export class AdminPanelComponent implements OnInit {
       });
     }
   }
-
+togglePassword() {
+  this.showPassword = !this.showPassword;
+}
 
   switchToForgotPassword() {
     this.isForgotPasswordMode = true;
@@ -132,7 +133,7 @@ export class AdminPanelComponent implements OnInit {
       this.loginForm.markAllAsTouched();
       return;
     }
-
+    this.isLoading = true;
     this.errorMessage = '';
 
     const { email, password, remember } = this.loginForm.value;
@@ -148,13 +149,13 @@ export class AdminPanelComponent implements OnInit {
 
     this.jobService.login(email, password).subscribe({
       next: (res) => {
-
+        this.isLoading = false;
         if (res?.success && res?.data?.access_token) {
           localStorage.setItem('token', res.data.access_token);
           localStorage.setItem('hasLoggedIn', 'true');
 
           this.toastr.success('Login successful!');
-
+          this.router.navigate(['/admin']);
           window.location.reload(); // refresh & redirect automatically based on routing
         } else {
           this.errorMessage = res?.message || 'Invalid login';

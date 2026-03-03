@@ -1,21 +1,20 @@
 @use "./../../../../variables" as *;
 
 .culture-values-section {
-    padding: 100px 0px 0px;
+    padding: 60px 0px 0px;
     background: #ffffff;
     font-family: "Inter", sans-serif;
     text-align: justify;
     text-justify: inter-word;
 
-    .section-subtitle {
-        font-size: 1.6rem;
-        font-weight: 600;
-        color: #00337C;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-bottom: 20px;
-    }
-
+  .section-subtitle {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #00337C;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
     .intro {
         font-size: 16.5px;
         color: #444;
@@ -98,6 +97,7 @@
 
     /* 📱 Responsive */
     @media (max-width: 992px) {
+        padding: 60px 0px 0px;
         .section-subtitle {
             text-align: center;
         }
@@ -115,7 +115,7 @@
     }
 
     @media (max-width: 576px) {
-        padding: 50px 0;
+        padding: 50px 0 0;
 
         .intro,
         .closing {

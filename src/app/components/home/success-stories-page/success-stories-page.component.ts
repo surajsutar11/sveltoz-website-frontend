@@ -10,7 +10,7 @@ export class SuccessStoriesPageComponent {
 
   stories = [
     {
-      image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6",
+      image: "assets/images/sspl-img/success-story-photo1.webp",
       category: "Technology Solutions",
       domain: "Agriculture",
       date: "14 November, 2025",
@@ -25,7 +25,7 @@ export class SuccessStoriesPageComponent {
     },
 
     {
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+      image: "assets/images/sspl-img/success-story-photo2.webp",
       category: "Technology Solutions",
       domain: "Manufacturing",
       date: "12 November, 2025",
@@ -40,7 +40,7 @@ export class SuccessStoriesPageComponent {
     },
 
     {
-      image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&w=1200&q=80",
+      image: "assets/images/sspl-img/success-story-photo3.webp",
       category: "Technology Solutions",
       domain: "Enterprise Operations",
       date: "10 November, 2025",
@@ -55,7 +55,7 @@ export class SuccessStoriesPageComponent {
     },
 
     {
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31",
+      image: "assets/images/sspl-img/success-story-photo4.webp",
       category: "Technology Solutions",
       domain: "Technology / SaaS",
       date: "09 November, 2025",
@@ -70,7 +70,7 @@ export class SuccessStoriesPageComponent {
     },
 
     {
-      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80", category: "AI & Machine Learning",
+      image: "assets/images/sspl-img/success-story-photo5.webp", category: "AI & Machine Learning",
       domain: "BFSI (Insurance)",
       date: "07 November, 2025",
       title: "Insurance Lead Conversion Prediction",
@@ -84,7 +84,7 @@ export class SuccessStoriesPageComponent {
     },
 
     {
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      image: "assets/images/sspl-img/success-story-photo6.webp",
       category: "Technology Solutions",
       domain: "Energy / Utilities",
       date: "06 November, 2025",
@@ -99,7 +99,7 @@ export class SuccessStoriesPageComponent {
     },
 
     {
-      image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1200&q=80", category: "Data & Analytics",
+      image: "assets/images/sspl-img/success-story-photo7.webp", category: "Data & Analytics",
       domain: "Retail / Consumer Goods",
       date: "05 November, 2025",
       title: "Data Engineering & BI Modernization",
@@ -113,7 +113,7 @@ export class SuccessStoriesPageComponent {
     },
 
     {
-  image: "https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=1200&q=80",
+  image: "assets/images/sspl-img/success-story-photo8.webp",
       category: "AI & Computer Vision",
       domain: "Manufacturing",
       date: "04 November, 2025",

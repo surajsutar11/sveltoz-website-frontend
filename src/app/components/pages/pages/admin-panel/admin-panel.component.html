@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h2 class="section-title">
+        <h2 class="section-subtitle">
           {{ isForgotPasswordMode ? 'Recover Your Password' : 'Login to Your Account' }}
         </h2>
       </div>
@@ -10,8 +10,15 @@
 
     <div class="auth-container">
       <!-- Left side image always -->
+      <!-- <div class="auth-image">
+        <img src="assets/images/sspl-img/login.webp" alt="Login Illustration" />
+      </div> -->
       <div class="auth-image">
-        <img src="assets/images/ssplImg/login.png" alt="Login Illustration" />
+        <picture>
+          <source srcset="assets/images/sspl-img/login.webp" type="image/webp">
+          <img src="assets/images/sspl-img/login.webp"
+            alt="Secure user login illustration for Sveltoz Solutions platform" loading="lazy" decoding="async">
+        </picture>
       </div>
 
       <!-- LOGIN FORM -->
@@ -29,13 +36,21 @@
             </div>
           </div>
 
-          <div class="form-group">
+          <div class="form-group password-wrapper">
             <label>Password</label>
-            <input type="password" formControlName="password" placeholder="Enter your password" />
+
+            <div class="password-field">
+              <input [type]="showPassword ? 'text' : 'password'" formControlName="password"
+                placeholder="Enter your password" />
+
+              <i class="fa" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'" (click)="togglePassword()"></i>
+            </div>
+
             <div class="error" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
               Password is required
             </div>
           </div>
+
 
           <div class="form-footer">
             <div class="remember">

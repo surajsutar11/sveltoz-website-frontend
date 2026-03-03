@@ -1,6 +1,6 @@
 .auth-section {
   background: #ffffff;
-  padding: 100px 0 150px;
+  padding: 100px 0 50px;
   font-family: "Inter", sans-serif;
   overflow: hidden;
 
@@ -9,12 +9,14 @@
     margin: 0 auto;
     padding: 20px 20px;
   }
-  .section-title {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #00337c;
-    margin-bottom: 10px;
-  }
+   .section-subtitle {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #00337C;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
 
   .auth-container {
     display: flex;
@@ -218,7 +220,7 @@
       margin: 0 auto;
     }
 
-    .section-title {
+    .section-subtitle {
       font-size: 1.7rem;
     }
   }
@@ -226,7 +228,7 @@
   @media (max-width: 768px) {
     padding: 100px 0 60px;
 
-    .section-title {
+    .section-subtitle {
       font-size: 1.5rem;
     }
 
@@ -262,7 +264,7 @@
       padding: 0 16px;
     }
 
-    .section-title {
+    .section-subtitle {
       font-size: 1.3rem;
     }
 
@@ -274,4 +276,29 @@
       }
     }
   }
+}
+.password-wrapper {
+  position: relative;
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.password-field i {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+}
+
+.password-field i:hover {
+  color: #000;
 }

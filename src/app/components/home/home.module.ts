@@ -7,8 +7,7 @@ import { AboutComponent } from './about/about.component';
 import { BannerComponent } from './banner/banner.component';
 import { ContactComponent } from './contact/contact.component';
 import { JobsComponent } from './jobs/jobs.component';
-import { MoreProyectsComponent } from './more-proyects/more-proyects.component';
-import { ProyectsComponent } from './proyects/proyects.component';
+// import { MoreProyectsComponent } from './more-proyects/more-proyects.component';
 import { NgbModule, NgbNav, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -18,7 +17,6 @@ import { ResourceCenterComponent } from './resource-center/resource-center.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DifferentiatorsComponent } from './differentiators/differentiators.component';
-import { ServiceComponent } from '../service-page/service/service.component';
 import { ServicesHomeComponent } from './services-home/services-home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CareerComponent } from './career/career.component';
@@ -47,10 +45,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ToastrModule } from 'ngx-toastr';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
-
 
 
 @NgModule({
@@ -59,8 +53,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BannerComponent,
     AboutComponent,
     JobsComponent,
-    ProyectsComponent,
-    MoreProyectsComponent,
+    // MoreProyectsComponent,
     ContactComponent,
     IndustriesComponent,
     ResourceCenterComponent,
@@ -109,13 +102,13 @@ export function HttpLoaderFactory(http: HttpClient) {
   timeOut: 3000              // auto disappear
 }),
 
-    TranslateModule.forChild({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+    // TranslateModule.forChild({
+    //   loader: {
+    //     provide: TranslateLoader,
+    //     useFactory: HttpLoaderFactory,
+    //     deps: [HttpClient]
+    //   }
+    // })
   ]
 })
 export class HomeModule { }

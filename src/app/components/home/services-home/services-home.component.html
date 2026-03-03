@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h5 class="section-subtitle">Our Services</h5>
+        <h2 class="section-subtitle">Our Services</h2>
         <p class="intro">
           Discover our end-to-end technology expertise — from intelligent AI solutions to
           enterprise-grade software systems, cloud infrastructure, and innovation consulting.
@@ -11,7 +11,7 @@
     </div>
     <div class="services-container">
       <div class="service-card" *ngFor="let category of services">
-        <h2>{{ category.title }}</h2>
+        <h3>{{ category.title }}</h3>
         <ul class="points">
           <li *ngFor="let item of category.points">
             {{ item }}

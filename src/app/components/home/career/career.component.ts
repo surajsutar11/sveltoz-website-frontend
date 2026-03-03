@@ -24,6 +24,8 @@ export class CareerComponent {
  isAdminLoggedIn: boolean = false;
   jobs: Job[] = []
 
+currentPage: number = 1;
+itemsPerPage: number = 5;
   constructor(private dialog: MatDialog, private api: ApiServiceService,private sanitizer: DomSanitizer,
     private toastr: ToastrService) { }
 
@@ -35,7 +37,6 @@ export class CareerComponent {
       // this.toastr.success("Job posts loaded successfully");
     },
     error: (err) => {
-      console.error("Error:", err)
       // this.toastr.error("Failed to load job posts. Try again.");
     }
   });
@@ -78,5 +79,22 @@ sanitizeHtml(html: string): SafeHtml {
   const text = description.replace(/<[^>]*>/g, '').trim();
   return text.length > 200;
 }
+
+
+get totalPages(): number {
+  return Math.ceil(this.jobs.length / this.itemsPerPage);
+}
+
+get paginatedJobs() {
+  const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+  return this.jobs.slice(startIndex, startIndex + this.itemsPerPage);
+}
+
+changePage(page: number) {
+  if (page >= 1 && page <= this.totalPages) {
+    this.currentPage = page;
+  }
+}
+
 
 }

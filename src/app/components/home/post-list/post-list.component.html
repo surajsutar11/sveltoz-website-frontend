@@ -3,16 +3,11 @@
     <h2>Job Posts</h2>
 
     <div class="toolbar-actions">
-      <!-- <mat-form-field appearance="outline">
-        <mat-label>Search</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Title, company, location" class="search-field" />
-      </mat-form-field> -->
-
-
       <button mat-flat-button color="primary" (click)="openAddDialog()">
-        <mat-icon>add</mat-icon>
+        <i class="fa fa-plus"></i>
         Add Post
       </button>
+
       <div class="search-box">
         <label>Search</label>
         <input type="text" (keyup)="applyFilter($event)" placeholder="Title, company, location">
@@ -25,6 +20,7 @@
   <div class="table-wrapper" [hidden]="isLoading">
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z2">
 
+      <!-- Sr No -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Sr.No.</th>
         <td mat-cell *matCellDef="let row; let i = index">
@@ -32,6 +28,7 @@
         </td>
       </ng-container>
 
+      <!-- Title -->
       <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
         <td mat-cell *matCellDef="let row">
@@ -42,21 +39,25 @@
         </td>
       </ng-container>
 
+      <!-- Location -->
       <ng-container matColumnDef="location">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
         <td mat-cell *matCellDef="let row">{{ row.location }}</td>
       </ng-container>
 
+      <!-- Type -->
       <ng-container matColumnDef="job_type">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
         <td mat-cell *matCellDef="let row">{{ row.job_type }}</td>
       </ng-container>
 
+      <!-- Salary -->
       <ng-container matColumnDef="salary">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Salary</th>
         <td mat-cell *matCellDef="let row">{{ row.salary }}</td>
       </ng-container>
 
+      <!-- Status -->
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
         <td mat-cell *matCellDef="let row">
@@ -66,46 +67,43 @@
         </td>
       </ng-container>
 
-
+      <!-- Created -->
       <ng-container matColumnDef="created_at">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Created</th>
         <td mat-cell *matCellDef="let row">
           {{ (row.updated_at + 'Z') | date:'medium':'+05:30':'en-US' }}
-
         </td>
       </ng-container>
 
-
+      <!-- Actions -->
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let row">
           <button mat-icon-button class="edit-btn" (click)="openEditDialog(row)">
-            <mat-icon>edit</mat-icon>
+            <i class="fa fa-edit"></i>
           </button>
 
           <button mat-icon-button class="delete-btn" (click)="deletePost(row)">
-            <mat-icon>delete</mat-icon>
+            <i class="fa fa-trash"></i>
           </button>
         </td>
       </ng-container>
 
+      <!-- Header & Row -->
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell no-data-cell" [attr.colspan]="displayedColumns.length">
+          No job posts found
+        </td>
+      </tr>
 
-        <tr class="mat-row" *matNoDataRow>
-    <td class="mat-cell no-data-cell" [attr.colspan]="displayedColumns.length">
-      No job posts found
-    </td>
-  </tr>
     </table>
+
     <div class="paginator-card">
-      <!-- <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons>
-      </mat-paginator> -->
       <mat-paginator [length]="dataSource.filteredData.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 50]"
         showFirstLastButtons>
       </mat-paginator>
     </div>
-
-    <!-- <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"></mat-paginator> -->
   </div>
 </div>

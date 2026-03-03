@@ -1,15 +1,12 @@
 <owl-carousel-o [options]="customOptions" class="banner-carousel">
   <ng-template carouselSlide class="sliders">
     <div class="slide-container position-relative overflow-hidden owl-stage">
-
-      <!-- 🔹 Content -->
       <div class="content-wrapper slider-containent">
         <div class="text-section text-white">
-          <h6 class="banner-name">Building the Future <br> with Intelligent <br>Machines</h6>
+          <h3 class="banner-name">Building the Future <br> with Intelligent <br>Machines</h3>
 
-          <p class="banner-description mt-3" [innerHTML]="'Transforming complex data into actionable intelligence with AI and ML innovation..'"></p>
-
-          <!-- 🔹 Bullet Points Section -->
+          <p class="banner-description mt-3"
+            [innerHTML]="'Transforming complex data into actionable intelligence with AI and ML innovation..'"></p>
           <ul class="banner-bullets mt-3">
             <li>Predictive & Cognitive AI Solutions</li>
             <li>Computer Vision, NLP, and Deep Learning</li>
@@ -27,18 +24,25 @@
         </div>
 
         <div class="image-section text-center" style="max-width: 444px;">
-          <img src="assets/images/slider/ladyrobot.svg" alt="Product Engineering" class="slide-img img-fluid" />
+          <picture>
+            <img src="assets/images/sspl-img/ladyrobot-removebg-preview.webp"
+              alt="AI-powered product engineering illustration" class="slide-img img-fluid" width="444" height="300"
+              decoding="async" fetchpriority="high">
+
+          </picture>
         </div>
       </div>
 
     </div>
   </ng-template>
-  <ng-template carouselSlide  class="sliders">
+  <ng-template carouselSlide class="sliders">
     <div class="slide-container position-relative overflow-hidden owl-stage">
       <div class="content-wrapper slider-containent">
         <div class="text-section text-white">
-          <h6 class="banner-name">Engineering the Skies <br> with Precision and <br> Intelligence</h6>
-          <p class="banner-description mt-3" [innerHTML]="'Developing advanced drone systems for industrial, agricultural, and logistics applications.'"></p>
+          <h3 class="banner-name">Engineering the Skies <br> with Precision and <br> Intelligence</h3>
+          <p class="banner-description mt-3"
+            [innerHTML]="'Developing advanced drone systems for industrial, agricultural, and logistics applications.'">
+          </p>
 
           <ul class="banner-bullets mt-3">
             <li>Custom-Built Drone Hardware & Software</li>
@@ -54,20 +58,26 @@
             </a>
           </div>
         </div>
-
         <div class="image-section text-center">
-          <img src="assets/images/slider/dron.svg" alt="Product Engineering" class="slide-img img-fluid" />
+          <picture>
+          </picture><img src="assets/images/sspl-img/dron-removebg-preview.webp"
+            alt="Autonomous drone technology for product engineering" class="slide-img img-fluid" width="444"
+            height="300" decoding="async" fetchpriority="high">
+
         </div>
+
       </div>
     </div>
   </ng-template>
-  <ng-template carouselSlide  class="sliders">
+  <ng-template carouselSlide class="sliders">
     <div class="slide-container position-relative overflow-hidden owl-stage">
-  
+
       <div class="content-wrapper slider-containent">
         <div class="text-section text-white">
-          <h6 class="banner-name">Connecting Intelligence <br> with Engineering <br> Excellence</h6>
-          <p class="banner-description mt-3" [innerHTML]="'Delivering next-gen enterprise software, leT, and automation solutions that power intelligent ecosystems.'"></p>
+          <h3 class="banner-name">Connecting Intelligence <br> with Engineering <br> Excellence</h3>
+          <p class="banner-description mt-3"
+            [innerHTML]="'Delivering next-gen enterprise software, leT, and automation solutions that power intelligent ecosystems.'">
+          </p>
           <ul class="banner-bullets mt-3">
             <li>End-to-End Product Engineering</li>
             <li>Data Analytics & IoT Solutions
@@ -85,81 +95,15 @@
           </div>
         </div>
         <div class="image-section text-center">
-          <img src="assets/images/slider/networkNeuron.svg" alt="Product Engineering" class="slide-img img-fluid" />
+          <picture>
+
+            <img src="assets/images/sspl-img/networkNeuron.webp"
+              alt="Neural network visualization for AI product engineering" class="slide-img img-fluid" width="444"
+              height="300" decoding="async" fetchpriority="high">
+          </picture>
         </div>
+
       </div>
     </div>
   </ng-template>
 </owl-carousel-o>
-
-
-
-
-
-<!-- <owl-carousel-o [options]="customOptions" class="banner-carousel"> 
-  <ng-template
-    carouselSlide>
-    <div class="slide-container"> <img src="assets/images/slider/femalerobot.svg" alt="Product Engineering"
-        class="slide-img">
-      <div class="carousel-caption left-caption">
-        <div class="section-box-banner text-white">
-          <div class="content text-start">
-            <h6 class="banner-name">{{ 'Banner.Slide1.Title' | translate }}</h6>
-            <p class="banner-description mt-3" [innerHTML]="'Banner.Slide1.Description' | translate"></p>
-          </div>
-          <div class="banner-buttons mt-4"> <a class="btn btn-outline-light me-3" href="#know-how"> Know How <span
-                class="arrow">➔</span> </a> <a class="btn btn-light text-dark" href="#success-stories"> Success Stories
-              <span class="arrow">➔</span> </a> </div>
-        </div>
-      </div>
-    </div>
-   </ng-template>  -->
-<!-- <ng-template carouselSlide>
-    <div class="slide-container"> <img src="assets/images/slider/pexels-kevin-ku-92347-577585.jpg" alt="Home Page Product Engg"
-        class="slide-img">
-      <div class="carousel-caption left-caption">
-        <div class="section-box-banner text-white">
-          <div class="content text-start">
-            <h2 class="banner-name">{{ 'Banner.Slide2.Title' | translate }}</h2>
-            <p class="banner-description mt-3" [innerHTML]="'Banner.Slide2.Description' | translate"></p>
-          </div>
-          <div class="banner-buttons mt-4"> <a class="btn btn-outline-light me-3" href="#know-how"> Know How <span
-                class="arrow">➔</span> </a> <a class="btn btn-light text-dark" href="#success-stories"> Success Stories
-              <span class="arrow">➔</span> </a> </div>
-        </div>
-      </div>
-    </div>
-  </ng-template><ng-template carouselSlide>
-    <div class="slide-container"> <img src="assets/images/slider/pexels-tara-winstead-8386440.jpg" alt="AWS Partner" class="slide-img">
-      <div class="carousel-caption left-caption">
-        <div class="section-box-banner text-white">
-          <div class="content text-start">
-            <h2 class="banner-name">{{ 'Banner.Slide3.Title' | translate }}</h2>
-            <p class="banner-description mt-3" [innerHTML]="'Banner.Slide3.Description' | translate"></p>
-          </div>
-          <div class="banner-buttons mt-4"> <a class="btn btn-outline-light me-3" href="#know-how"> Know How <span
-                class="arrow">➔</span> </a> <a class="btn btn-light text-dark" href="#success-stories"> Success Stories
-              <span class="arrow">➔</span> </a> </div>
-        </div>
-      </div>
-    </div>
-  </ng-template>  <ng-template carouselSlide>
-    <div class="slide-container"> <img src="assets/images/slider/home-hero-02-mobile.jpg" alt="Future Ready"
-        class="slide-img">
-      <div class="carousel-caption left-caption">
-        <div class="section-box-banner text-white">
-          <div class="content text-start">
-            <h2 class="banner-name">{{ 'Banner.Slide4.Title' | translate }}</h2>
-            <p class="banner-description mt-3" [innerHTML]="'Banner.Slide4.Description' | translate"></p>
-          </div>
-          <div class="banner-buttons mt-4">
-            <a class="btn btn-outline-light me-3" href="#know-how"> Know How <span class="arrow">➔</span> </a>
-            <a class="btn btn-light text-dark" href="#success-stories"> Success Stories <span class="arrow">➔</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </ng-template>
-
-   </owl-carousel-o> -->

@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  backendBaseUrl:'http://117.217.120.58:6002',
+  // backendBaseUrl:'http://117.217.120.58:6002',
+  // backendBaseUrl:'http://ssplapis.sveltoz.com',
+  //  backendBaseUrl:'http://sspl.sveltoz.com/api/public',
+  backendBaseUrl:'https://www.sveltoz.com/api/public',
   trackAnalyticID: "G-4ML1VNCP9T"
 };
 

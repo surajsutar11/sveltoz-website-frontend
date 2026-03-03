@@ -1,7 +1,7 @@
-.contect-section{
-    padding: 100px 0px 0px;
-    background: #ffffff;
-    font-family: "Inter", sans-serif;
+.contect-section {
+  padding: 60px 0px 0px;
+  background: #ffffff;
+  font-family: "Inter", sans-serif;
 }
 
 .contact-container {
@@ -11,14 +11,15 @@
   gap: 30px;
   flex-wrap: wrap;
 }
- .section-subtitle {
-        font-size: 1.6rem;
-        font-weight: 600;
-        color: #00337C;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-bottom: 20px;
-    }
+
+  .section-subtitle {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #00337C;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
 
 .contact-image {
   flex: 1;
@@ -65,7 +66,8 @@ label {
   color: #444;
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -75,7 +77,8 @@ input, textarea {
   transition: border 0.3s ease;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   border-color: #00337C;
 }
 
@@ -91,9 +94,10 @@ button {
 }
 
 button:hover {
-  background-color:#00337C;
+  background-color: #00337C;
 }
-.btn-group{
+
+.btn-group {
   display: flex;
   justify-content: end;
 }
@@ -109,10 +113,12 @@ small {
     flex-direction: column;
   }
 
-  .contact-form, .contact-image {
+  .contact-form,
+  .contact-image {
     width: 100%;
   }
 }
+
 .toast-success {
   background-color: #4caf50 !important;
 }
@@ -120,6 +126,67 @@ small {
 .toast-error {
   background-color: #f44336 !important;
 }
+
 .toast-info {
   background-color: #2196f3 !important;
 }
+
+.business-presence {
+  margin-top: 50px;
+  text-align: center;
+
+  .presence-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: stretch; // important
+  }
+
+  .presence-card {
+    flex: 1 1 320px;
+    padding: 25px;
+    border-radius: 10px;
+    background: #f8f9fa;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+    display: flex;               // important
+    flex-direction: column;      // important
+
+    p{
+      color:#555
+    }
+    h5{
+      color: #555;
+    }
+  }
+
+  .address {
+    margin: 15px 0;
+  }
+
+  .linkedin-btn {
+  margin-top: auto;              // pushes button to bottom
+  align-self: flex-end;          // moves button to right corner
+
+  display: flex;                 // for perfect center alignment
+  align-items: center;
+  justify-content: center;
+
+  width: 180px;                  // fixed same width
+  height: 44px;                  // fixed same height
+
+  background-color: #00337C;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.linkedin-btn:hover {
+  background-color: #002a63;
+}
+
+}
+

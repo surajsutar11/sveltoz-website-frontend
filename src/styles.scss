@@ -3,6 +3,9 @@
 
 html {
   background-color: $Navy;
+  scroll-behavior: smooth;
+  scroll-padding-top: 40px;
+
 }
 
 body {
@@ -76,17 +79,25 @@ backdrop-filter: blur(4px);
     bottom: 4px;
   }
 
-  &:after {
-    content: "";
-    display: block;
-    height: 1px;
-    width: 300px;
-    background-color: $LightestNavy;
-    position: relative;
-    top: -5px;
-    margin-left: 20px;
-  }
+  // &:after {
+  //   content: "";
+  //   display: block;
+  //   height: 1px;
+  //   width: 300px;
+  //   background-color: $LightestNavy;
+  //   position: relative;
+  //   top: -5px;
+  //   margin-left: 20px;
+  // }
 }
+//  .section-subtitle {
+//         font-size: 1.6rem;
+//         font-weight: 600;
+//         color: #00337C;
+//         text-transform: uppercase;
+//         letter-spacing: 0.5px;
+//         margin-bottom: 20px;
+//     }
 
 .main-btn {
   color: $Green;

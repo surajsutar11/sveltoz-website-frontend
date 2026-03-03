@@ -54,7 +54,7 @@
 
     <div class="form-actions">
       <button type="button" class="btn cancel" (click)="onCancel()">Cancel</button>
-      <button type="submit" class="btn submit" (click)="onSubmit()" [disabled]="applyForm.invalid">Submit</button>
+      <button type="submit" class="btn submit" (click)="onSubmit()" [disabled]="applyForm.invalid || isSubmitting">{{ isSubmitting ? 'Submitting...' : 'Submit' }}</button>
     </div>
 
   </form>

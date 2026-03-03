@@ -2,7 +2,7 @@
 
 .our-story-section {
   background: #ffffff;
-  padding: 100px 0px 0px;
+  padding: 60px 0px 0px;
   font-family: "Inter", sans-serif;
   overflow: hidden;
 
@@ -14,7 +14,7 @@
 
   .content {
     display: flex;
-    align-items: center;
+    // align-items: center;
     justify-content: center;
     gap: 50px;
     flex-wrap: wrap;
@@ -26,8 +26,10 @@
     justify-content: center;
 
     img {
-      width: 100%;
+      // width: 100%;
       // max-width: 450px;
+      width: 466px;
+    height: 510px;
       border-radius: 12px;
       object-fit: cover;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
@@ -39,14 +41,14 @@
     color: #333;
     text-align: justify; // ✨ Added
 
-    .section-subtitle {
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #00337c;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 25px;
-    }
+   .section-subtitle {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #00337C;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
 
     .story-list {
       list-style: none;
@@ -117,7 +119,7 @@
   }
 
   @media (max-width: 600px) {
-    padding: 60px 0;
+    padding: 60px 0 0;
 
     .text-container {
       .section-subtitle {

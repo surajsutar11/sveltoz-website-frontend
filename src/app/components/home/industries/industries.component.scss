@@ -2,7 +2,7 @@
 
 .our-vision-section {
   background: #ffffff;
-  padding: 100px 0px 0px;
+  padding: 60px 0px 0px;
   font-family: "Inter", sans-serif;
   overflow: hidden;
 
@@ -37,14 +37,14 @@
     flex: 1;
     color: #333;
 
-    .section-subtitle {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: #00337c;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 25px;
-    }
+  .section-subtitle {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #00337C;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
 
     .vision-list {
       list-style: none;
@@ -115,7 +115,7 @@
   }
 
   @media (max-width: 600px) {
-    padding: 60px 0;
+    padding: 60px 0 0;
 
     .text-container {
       .section-subtitle {

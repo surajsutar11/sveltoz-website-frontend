@@ -95,8 +95,9 @@
   <!-- FOOTER -->
   <div class="form-actions">
     <button type="button" class="btn cancel" (click)="onCancel()">Cancel</button>
-    <button type="submit" class="btn submit" (click)="onSave()" [disabled]="postForm.invalid">
-      {{ isEditMode ? 'Save Changes' : 'Add Job Post' }}
+    <button type="submit" class="btn submit" (click)="onSave()" [disabled]="postForm.invalid || isSaving">
+      {{ isSaving ? (isEditMode ? 'Saving Changes...' : 'Adding Job Post...') : '' }} 
+      {{ !isSaving ? (isEditMode ? 'Save Changes' : 'Add Job Post') : '' }}
     </button>
   </div>
 

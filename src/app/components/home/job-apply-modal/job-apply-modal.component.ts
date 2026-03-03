@@ -17,7 +17,7 @@ export class JobApplyModalComponent {
   applyForm!: FormGroup;
   resumeUploaded: File | null = null;
   submitAttempted = false;
-
+  isSubmitting = false;
   constructor(private fb: FormBuilder,
     private dialogRef: MatDialogRef<JobApplyModalComponent>,
     private apiService: ApiServiceService,
@@ -55,7 +55,7 @@ export class JobApplyModalComponent {
 
   onSubmit() {
     this.submitAttempted = true;
-
+   this.isSubmitting = true;
     if (this.applyForm.invalid || !this.resumeUploaded) {
       this.applyForm.markAllAsTouched();
       this.toastr.info("Please fill all fields & upload resume");
@@ -71,12 +71,13 @@ export class JobApplyModalComponent {
     formData.append('post_id', this.applyForm.value.post_id);
     this.apiService.applyJob(formData).subscribe({
       next: (res) => {
+        this.isSubmitting = false;
         this.toastr.success("Application submitted successfully!");
         this.dialogRef.close(true);
       },
       error: (err) => {
+        this.isSubmitting = false;
         this.toastr.error("Something went wrong. Try again!");
-        console.error(err);
       }
     });
   }

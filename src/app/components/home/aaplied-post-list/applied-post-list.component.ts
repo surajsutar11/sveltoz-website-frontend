@@ -115,8 +115,6 @@ export class AppliedPostListComponent implements OnInit, AfterViewInit {
       },
 
       error: (err) => {
-        console.error("Download error:", err);
-        alert("Error downloading resume.");
       }
     });
   }

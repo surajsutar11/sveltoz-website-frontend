@@ -5,10 +5,19 @@
       <div class="story-card" *ngFor="let story of stories">
 
         <!-- Image -->
-        <div class="image-wrapper">
+        <!-- <div class="image-wrapper">
           <img [src]="story.image" alt="{{ story.title }}" />
           <span class="badge">Success Story</span>
+        </div> -->
+        <div class="image-wrapper">
+          <picture>
+            <img [src]="story.image" [alt]="story.title + ' success story by Sveltoz Solutions'" width="600"
+              height="400" loading="lazy" decoding="async" class="img-fluid">
+          </picture>
+
+          <span class="badge">Success Story</span>
         </div>
+
 
         <!-- Category -->
         <span class="category">{{ story.category }}</span>

@@ -1,6 +1,6 @@
 <section class="career-section container">
   <div class="intro">
-    <h2>Join Our Team</h2>
+    <h2 class="section-subtitle">Join Our Team</h2>
     <p>We are always looking for passionate, talented individuals who want to innovate and create real impact.</p>
   </div>
 
@@ -9,14 +9,15 @@
        'two-jobs': jobs.length === 2
      }">
 
-    <div class="job-card" *ngFor="let job of jobs">
+    <div class="job-card" *ngFor="let job of paginatedJobs">
       <h3>{{ job.title }}</h3>
 
       <div class="meta">
         <span><i class="fa fa-sitemap"></i> {{ job.department }}</span>
         <span><i class="fa fa-map-marker"></i> {{ job.location }}</span>
         <span><i class="fa fa-clock"></i>{{ job.job_type }}</span>
-        <span><i class="fa fa-inr"></i> {{ job.salary }}</span>
+        <span><i class="fas fa-rupee-sign"></i>
+ {{ job.salary }}</span>
       </div>
 
       <!-- <pre class="desc">{{ job.description }}</pre> -->
@@ -45,4 +46,26 @@
       </div>
     </div>
   </div>
+
+  <div class="pagination" *ngIf="totalPages > 1">
+  <button 
+    (click)="changePage(currentPage - 1)" 
+    [disabled]="currentPage === 1">
+    Prev
+  </button>
+
+  <button 
+    *ngFor="let page of [].constructor(totalPages); let i = index"
+    (click)="changePage(i + 1)"
+    [class.active]="currentPage === i + 1">
+    {{ i + 1 }}
+  </button>
+
+  <button 
+    (click)="changePage(currentPage + 1)" 
+    [disabled]="currentPage === totalPages">
+    Next
+  </button>
+</div>
+
 </section>

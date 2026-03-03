@@ -1,77 +1,74 @@
 <nav class="navbar main-navbar on-top" [class.nav-shadow]='this.pageYPosition>0'>
     <div class="container">
         <a class="navbar-brand text-light" [routerLink]="'inicio'">
-            <img src='assets/icons/Sveltoz-logo.png' width='100' />
-            </a>
+            <picture>
+                <source srcset="assets/images/sspl-img/sveltoz-logo.webp" type="image/webp">
+                <img src="assets/images/sspl-img/sveltoz-logo.webp" width="100" alt="Sveltoz Solutions Private Limited"
+                    loading="lazy" decoding="async">
+            </picture>
+        </a>
+
         <ul ngbNav #nav="ngbNav" class="menu-ul">
-            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_about", "menu", "click")'
-                class="mega-menu" (mouseenter)="openMegaMenu('about')" (mouseleave)="startCloseMegaMenu()">
+            <li ngbNavItem class="mega-menu" (mouseenter)="openMegaMenu('about')" (mouseleave)="startCloseMegaMenu()">
                 <a ngbNavLink class="nav-link" (click)='scrollToSection("about")'><span class="underline nav-text">
                         About Us</span></a>
                 <ng-template ngbNavContent>First content</ng-template>
             </li>
-            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_story", "menu", "click")'
-                class="mega-menu" (mouseenter)="openMegaMenu('story')" (mouseleave)="startCloseMegaMenu()">
+            <li ngbNavItem class="mega-menu" (mouseenter)="openMegaMenu('story')" (mouseleave)="startCloseMegaMenu()">
                 <a ngbNavLink class="nav-link" (click)='scrollToSection("story")'><span class="underline nav-text">
-                       Our Story</span></a>
+                        Our Story</span></a>
                 <ng-template ngbNavContent>Second content</ng-template>
             </li>
-            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_vision", "menu", "click")'
-                class="mega-menu" (mouseenter)="openMegaMenu('vision')" (mouseleave)="startCloseMegaMenu()">
+            <li ngbNavItem class="mega-menu" (mouseenter)="openMegaMenu('vision')" (mouseleave)="startCloseMegaMenu()">
                 <a ngbNavLink (click)='scrollToSection("vision")' class="nav-link"> <span class="underline nav-text">
                         Our Vision</span></a>
                 <ng-template ngbNavContent>Portfolio Content</ng-template>
             </li>
 
-            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_mission", "menu", "click")'
-                class="mega-menu" (mouseenter)="openMegaMenu('mission')" (mouseleave)="startCloseMegaMenu()">
+            <li ngbNavItem class="mega-menu" (mouseenter)="openMegaMenu('mission')" (mouseleave)="startCloseMegaMenu()">
                 <a ngbNavLink (click)='scrollToSection("mission")' class="nav-link"> <span class="underline nav-text">
                         Mission</span></a>
                 <ng-template ngbNavContent>industries Content</ng-template>
             </li>
-            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_culture", "menu", "click")'
-                class="mega-menu" (mouseenter)="openMegaMenu('culture')" (mouseleave)="startCloseMegaMenu()">
+            <li ngbNavItem class="mega-menu" (mouseenter)="openMegaMenu('culture')" (mouseleave)="startCloseMegaMenu()">
 
                 <a ngbNavLink (click)='scrollToSection("culture")' class="nav-link">
                     <span class="underline nav-text">Culture & Values</span>
                 </a>
             </li>
 
-            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_services", "menu", "click")'
-                class="mega-menu" (mouseenter)="openMegaMenu('services')" (mouseleave)="startCloseMegaMenu()">
+            <li ngbNavItem class="mega-menu" (mouseenter)="openMegaMenu('services')"
+                (mouseleave)="startCloseMegaMenu()">
 
                 <a ngbNavLink (click)='scrollToSection("services")' class="nav-link" role="button">
                     <span class="underline nav-text">Services</span>
                 </a>
             </li>
 
-            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_contact", "menu", "click")'
-                class="mega-menu" (mouseenter)="openMegaMenu('contact')" (mouseleave)="startCloseMegaMenu()">
+            <li ngbNavItem class="mega-menu" (mouseenter)="openMegaMenu('contact')" (mouseleave)="startCloseMegaMenu()">
 
                 <a ngbNavLink (click)='scrollToSection("contact")' class="nav-link" role="button">
                     <span class="underline nav-text">Contact</span>
                 </a>
             </li>
 
-            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_career", "menu", "click")'
-                class="mega-menu" (mouseenter)="openMegaMenu('career')" (mouseleave)="startCloseMegaMenu()">
+            <li ngbNavItem class="mega-menu" (mouseenter)="openMegaMenu('career')" (mouseleave)="startCloseMegaMenu()">
 
                 <a ngbNavLink (click)='scrollToSection("career")' class="nav-link" role="button">
                     <span class="underline nav-text">Career</span>
                 </a>
             </li>
-             <ng-container *ngIf="isAdminLoggedIn">
-            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_dashboard", "menu", "click")'
-                class="mega-menu" (mouseenter)="openMegaMenu('dashboard')" (mouseleave)="startCloseMegaMenu()">
+            <ng-container *ngIf="isAdminLoggedIn">
+                <li ngbNavItem class="mega-menu" (mouseenter)="openMegaMenu('dashboard')"
+                    (mouseleave)="startCloseMegaMenu()">
 
-                <a ngbNavLink (click)='goToAdminDashboard()' class="nav-link" role="button">
-                    <span class="underline nav-text">Dashboard</span>
-                </a>
-            </li>
+                    <a ngbNavLink (click)='goToAdminDashboard()' class="nav-link" role="button">
+                        <span class="underline nav-text">Dashboard</span>
+                    </a>
+                </li>
             </ng-container>
-
-            <li ngbNavItem (click)='analyticsService.sendAnalyticEvent("click_admin_login", "menu", "click")'
-                class="mega-menu" (mouseenter)="openMegaMenu('admin-login')" (mouseleave)="startCloseMegaMenu()">
+            <li ngbNavItem class="mega-menu" (mouseenter)="openMegaMenu('admin-login')"
+                (mouseleave)="startCloseMegaMenu()">
 
                 <a ngbNavLink (click)='goToAdminPanel()' class="nav-link" role="button">
                     <span class="underline nav-text"> {{ isAdminLoggedIn ? "Logout" : "Login" }}</span>
@@ -81,61 +78,60 @@
 
 
         <div class="menu-wrapper">
-            <div [class.animate]='responsiveMenuVisible' (click)='responsiveMenuVisible = !responsiveMenuVisible'
-                class="hamburger-menu"></div>
+            <div [class.animate]='responsiveMenuVisible' (click)="toggleMenu()" class="hamburger-menu"></div>
         </div>
         <div class="menu-responsive" [ngStyle]="{'pointer-events': !responsiveMenuVisible ? 'none' : '' }">
             <aside [class.aside-show]='responsiveMenuVisible' [class.nav-shadow]='this.pageYPosition>0' class="on-top">
                 <nav>
                     <ol>
-                        <li (click)='analyticsService.sendAnalyticEvent("click_about", "menu", "click")'>
-                            <a (click)='scrollToSection("about")'>
+                        <li (click)="handleMenuClick('about', 'click_about')">
+                            <a>
                                 About Us
                             </a>
                         </li>
-                        <li (click)='analyticsService.sendAnalyticEvent("click_story", "menu", "click")'>
-                            <a (click)='scrollToSection("story")'>
-                               Our Story
+                        <li (click)="handleMenuClick('story', 'click_story')">
+                            <a>
+                                Our Story
                             </a>
                         </li>
-                        <li (click)='analyticsService.sendAnalyticEvent("click_vision", "menu", "click")'>
-                            <a (click)='scrollToSection("vision")'>
+                        <li (click)="handleMenuClick('vision', 'click_vision')">
+                            <a>
                                 Our Vision
                             </a>
                         </li>
-                        <li (click)='analyticsService.sendAnalyticEvent("click_mission", "menu", "click")'>
-                            <a (click)='scrollToSection("mission")'>
-                               Mission
+                        <li (click)="handleMenuClick('mission', 'click_mission')">
+                            <a>
+                                Mission
                             </a>
                         </li>
-                        <li (click)='analyticsService.sendAnalyticEvent("click_culture", "menu", "click")'>
-                            <a (click)='scrollToSection("culture")'>
+                        <li (click)="handleMenuClick('culture', 'click_culture')">
+                            <a>
                                 Culture & Values
                             </a>
                         </li>
-                        <li (click)='analyticsService.sendAnalyticEvent("click_services", "menu", "click")'>
-                            <a (click)='scrollToSection("services")'>
+                        <li (click)="handleMenuClick('services', 'click_services')">
+                            <a>
                                 Services
                             </a>
                         </li>
-                        <li (click)='analyticsService.sendAnalyticEvent("click_contact", "menu", "click")'>
-                            <a (click)='scrollToSection("contact")'>
-                               Contact
+                        <li (click)="handleMenuClick('contact', 'click_contact')">
+                            <a>
+                                Contact
                             </a>
                         </li>
-                        <li (click)='analyticsService.sendAnalyticEvent("click_career", "menu", "click")'>
-                            <a (click)='scrollToSection("career")'>
-                               Career
+                        <li (click)="handleMenuClick('career', 'click_career')">
+                            <a>
+                                Career
                             </a>
                         </li>
-                         <li *ngIf="isAdminLoggedIn" (click)='analyticsService.sendAnalyticEvent("click_dashboard", "menu", "click")'>
+                        <li *ngIf="isAdminLoggedIn">
                             <a (click)='goToAdminDashboard()'>
-                               Dashboard
+                                Dashboard
                             </a>
                         </li>
-                        <li (click)='analyticsService.sendAnalyticEvent("click_admin_login", "menu", "click")'>
+                        <li>
                             <a (click)='goToAdminPanel()'>
-                                 {{ isAdminLoggedIn ? "Logout" : "Login" }}
+                                {{ isAdminLoggedIn ? "Logout" : "Login" }}
                             </a>
                         </li>
                     </ol>

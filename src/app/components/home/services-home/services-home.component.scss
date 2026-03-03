@@ -1,19 +1,24 @@
 @use "./../../../../variables" as *;
 
 .services-section {
-  padding: 100px 0px 0px;
+  padding: 60px 0px 0px;
   background: #ffffff;
   font-family: "Inter", sans-serif;
 
-  .section-subtitle {
-    font-size: 1.6rem;
-    font-weight: 600;
+   .section-subtitle {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #00337C;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+.category-title{
+    font-size: 1rem;
     color: #00337c;
-    text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 20px;
-  }
-
+}
   .intro {
     font-size: 16.5px;
     color: #444;
@@ -112,7 +117,7 @@
   }
 
   @media (max-width: 576px) {
-    padding: 60px 0;
+    padding: 60px 0 0;
 
     .section-subtitle {
       font-size: 1.3rem;
@@ -148,7 +153,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.service-card h2 {
+.service-card h3 {
   font-size: 1.4rem;
   color: #00337c;
   margin-bottom: 15px;
@@ -169,7 +174,7 @@
 }
 
 @media (max-width: 768px) {
-  .service-card h2 {
+  .service-card h3 {
     font-size: 1.2rem;
   }
 
